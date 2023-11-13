@@ -20,7 +20,6 @@
 	  buildInputs = [
 	    nodejs
 	    yarn
-	    python-ldap
           ];
 	};
       });
