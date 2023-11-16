@@ -2,7 +2,9 @@
   description = "";
 
   inputs = {
-    nixpkgs = { url = "github:NixOS/nixpkgs/nixpkgs-unstable"; };
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    flake-utils.url = "github:numtide/flake-utils";
+    nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
   };
 
   outputs = inputs: {

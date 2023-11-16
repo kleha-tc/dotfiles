@@ -49,8 +49,8 @@
   services.xserver.enable = true;
 
   # Enable the Budgie Desktop environment.
-  services.xserver.displayManager.lightdm.enable = true;
-  services.xserver.desktopManager.budgie.enable = true;
+  services.xserver.displayManager.sddm.enable = true;
+  services.xserver.desktopManager.plasma5.enable = true;
 
   # Configure keymap in X11
   services.xserver = {
@@ -88,11 +88,64 @@
   users.users.haru = {
     isNormalUser = true;
     description = "Haruto Taniguchi";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "adbusers" ];
     packages = with pkgs; [
       firefox
       thunderbird
+      krita
+      inkscape
+      scribus
+      gimp
+      musescore
+      lilypond-with-fonts
+      lilypond-unstable-with-fonts
+      ardour
+      lmms
+      zrythm
+      kdeconnect
     ];
+    shell = pkgs.fish;
+  };
+
+    programs = {
+      git = {
+        enable = true;
+      };
+      neovim = {
+        enable = true;
+        defaultEditor = true;
+        viAlias = true;
+        vimAlias = true;
+      };
+      fish = {
+        enable = true;
+      };
+      adb = {
+        enable = true;
+      };
+    };
+
+  i18n.inputMethod = {
+    enabled = "fcitx5";
+    fcitx5.addons = [pkgs.fcitx5-mozc];
+  };
+
+  fonts = {
+    fonts = with pkgs; [
+      noto-fonts-cjk-serif
+      noto-fonts-cjk-sans
+      noto-fonts-emoji
+      fira-code
+    ];
+    fontDir.enable = true;
+    fontconfig = {
+      defaultFonts = {
+        serif = ["Noto Serif CJK JP" "Noto Color Emoji"];
+	sansSerif = ["Noto Sans CJK JP" "Noto Color Emoji"];
+	monospace = ["JetBrainsMono Nerd Font" "Noto Color Emoji"];
+	emoji = ["Noto Color Emoji"];
+      };
+    };
   };
 
   # Allow unfree packages
@@ -101,8 +154,12 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    #vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
+    docker
+    docker-compose
+    fritzing
+    kicad
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
