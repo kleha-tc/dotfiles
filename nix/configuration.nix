@@ -97,12 +97,20 @@
       scribus
       gimp
       musescore
+      zrythm
+      zrythm
       lilypond-with-fonts
+      zrythm
       lilypond-unstable-with-fonts
       ardour
       lmms
-      zrythm
+      kicad
       kdeconnect
+      ngspice
+      discord
+      zrythm
+      geogebra
+      reaper
     ];
     shell = pkgs.fish;
   };
@@ -120,9 +128,6 @@
       fish = {
         enable = true;
       };
-      adb = {
-        enable = true;
-      };
     };
 
   i18n.inputMethod = {
@@ -131,7 +136,7 @@
   };
 
   fonts = {
-    fonts = with pkgs; [
+    packages = with pkgs; [
       noto-fonts-cjk-serif
       noto-fonts-cjk-sans
       noto-fonts-emoji
