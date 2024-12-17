@@ -106,6 +106,7 @@
     skktools
     fcitx5
     fcitx5-configtool
+    fcitx5-skk
   ];
 
   programs = {
@@ -144,7 +145,7 @@
 
   i18n.inputMethod = {
     type = "fcitx5";
-    fcitx5.addons = [pkgs.fcitx5-skk];
+    fcitx5.addons = [fcitx5-skk];
   };
 
   fonts = {
