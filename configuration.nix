@@ -136,6 +136,34 @@
     };
   };
 
+  # internationalization (i18n)
+
+  i18n.inputMethod = {
+    enabled = "fcitx5";
+    fcitx5.addons = [pkgs.fcitx5-skk]
+  };
+
+  programs = {
+    libskk.enable = true;
+    skktools.enable = true;
+  }
+
+  fonts = {
+    fonts = with pkgs; [
+      ipaexfont
+      noto-fonts-emoji
+      hackgen-nf-font
+    ];
+    fontDir.enable = true;
+    fontConfig = {
+      defaultFonts = {
+        serif = ["IPAexMincho" "Noto Color Emoji"];
+	sansSerif = ["IPAexGothic" "Noto Color Emoji"];
+	monospace = ["HackGen" "Noto Color Emoji"];
+	emoji = ["Noto Color Emoji"];
+      };
+    };
+  };
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
