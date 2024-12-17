@@ -102,6 +102,9 @@
      # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
     emacs-nox
+    libskk
+    skktools
+    fcitx5
   ];
 
   programs = {
@@ -139,23 +142,18 @@
   # internationalization (i18n)
 
   i18n.inputMethod = {
-    enabled = "fcitx5";
-    fcitx5.addons = [pkgs.fcitx5-skk]
+    type = "fcitx5";
+    fcitx5.addons = [pkgs.fcitx5-skk];
   };
 
-  programs = {
-    libskk.enable = true;
-    skktools.enable = true;
-  }
-
   fonts = {
-    fonts = with pkgs; [
+    packages = with pkgs; [
       ipaexfont
       noto-fonts-emoji
       hackgen-nf-font
     ];
     fontDir.enable = true;
-    fontConfig = {
+    fontconfig = {
       defaultFonts = {
         serif = ["IPAexMincho" "Noto Color Emoji"];
 	sansSerif = ["IPAexGothic" "Noto Color Emoji"];
