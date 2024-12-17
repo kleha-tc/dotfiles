@@ -105,6 +105,7 @@
     libskk
     skktools
     fcitx5
+    fcitx5-configtool
   ];
 
   programs = {
