@@ -14,6 +14,10 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  boot.extraModulePackages = with config.boot.kernelPackages; [
+    rtl88xxau-aircrack
+  ];
+
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -86,6 +90,12 @@
     packages = with pkgs; [
       kdePackages.kate
       thunderbird
+      teams-for-linux
+      discord
+      slack
+      onlyoffice-desktopeditors
+      libreoffice
+      conda
     ];
     shell = pkgs.zsh;
   };
@@ -104,9 +114,8 @@
     emacs-nox
     libskk
     skktools
-    fcitx5
     fcitx5-configtool
-    fcitx5-skk
+    python314
   ];
 
   programs = {
@@ -145,7 +154,9 @@
 
   i18n.inputMethod = {
     type = "fcitx5";
-    fcitx5.addons = [fcitx5-skk];
+    enable = true;
+    fcitx5.addons = with pkgs; [fcitx5-skk];
+    fcitx5.waylandFrontend = true;
   };
 
   fonts = {
