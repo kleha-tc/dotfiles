@@ -3,7 +3,6 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 { config, pkgs, ... }:
-
 {
   imports =
     [ # Include the results of the hardware scan.
@@ -51,7 +50,9 @@
   services.xserver.enable = true;
 
   # Enable the KDE Plasma Desktop Environment.
-  services.displayManager.sddm.enable = true;
+  services.displayManager.sddm = {
+    enable = true;
+  };
   services.desktopManager.plasma6.enable = true;
 
   # Configure keymap in X11
@@ -96,6 +97,15 @@
       onlyoffice-desktopeditors
       libreoffice
       conda
+      freecad-wayland
+      blender
+      openscad
+      gimp
+      inkscape
+      zrythm
+      typst
+      satysfi
+      obsidian
     ];
     shell = pkgs.zsh;
   };
@@ -116,12 +126,10 @@
     skktools
     fcitx5-configtool
     python314
+    obs-studio
   ];
 
   programs = {
-    git = {
-      enable = true;
-    };
     neovim = {
       enable = true;
       defaultEditor = true;
