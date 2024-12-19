@@ -127,6 +127,7 @@
     fcitx5-configtool
     python314
     obs-studio
+    win-virtio
   ];
 
   programs = {
@@ -183,6 +184,24 @@
       };
     };
   };
+
+  # VM
+  
+  virtualisation = {
+    libvirtd = {
+      enable = true;
+      qemu = {
+        swtpm.enable = true;
+	ovmf.enable = true;
+	ovmf.packages = [ pkgs.OVMFFull.fd ];
+      };
+    };
+    spiceUSBRedirection.enable = true;
+  };
+  users.groups.libvirtd.members = [ "kleha" ];
+  programs.virt-manager.enable = true;
+
+
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
