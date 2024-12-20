@@ -14,7 +14,7 @@
       extraConfig = {
         init = {
           defaultBranch = "main";
-	};
+	      };
       };
     };
     gh = {
@@ -26,5 +26,46 @@
       colors = "auto";
       git = true;
     };
+    vscode = {
+      enable = true;
+      extensions = with pkgs.vscode-extensions; [
+        catppuccin.catppuccin-vsc
+        catppuccin.catppuccin-vsc-icons
+        haskell.haskell
+        ziglang.vscode-zig
+        rust-lang.rust-analyzer
+        mechatroner.rainbow-csv
+        jnoortheen.nix-ide
+      ];
+    };
+    zsh = {
+      enable = true;
+      shellAliases = {
+        ls = "eza --git --icons=auto";
+        ll = "eza -l --git --icons=auto";
+        la = "eza -a --git --icons=auto";
+        lla = "eza -la --git --icons=auto";
+        lt = "eza --tree --git --icons=auto";
+      };
+    };
+    neovim = {
+      enable = true;
+      viAlias = true;
+      vimAlias = true;
+      vimdiffAlias = true;
+      withNodeJs = true;
+			plugins = with pkgs.vimPlugins; [
+			  nvim-treesitter
+				nvim-treesitter-parsers.lua
+				nvim-treesitter-parsers.nix
+			];
+      extraLuaConfig = ''
+        vim.opt.runtimepath:prepend("${./nvim}")
+        require("001_main")
+      '';
+    };
+  };
+  xdg.configFile = {
+    "Code/User/settings.json".source = ./code/settings.json;
   };
 }

@@ -73,7 +73,7 @@
     alsa.support32Bit = true;
     pulse.enable = true;
     # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
+    jack.enable = true;
 
     # use the example session manager (no others are packaged yet so this is enabled by default,
     # no need to redefine it in your config for now)
@@ -128,6 +128,7 @@
     python314
     obs-studio
     win-virtio
+    deno
   ];
 
   programs = {
@@ -178,9 +179,9 @@
     fontconfig = {
       defaultFonts = {
         serif = ["IPAexMincho" "Noto Color Emoji"];
-	sansSerif = ["IPAexGothic" "Noto Color Emoji"];
-	monospace = ["HackGen" "Noto Color Emoji"];
-	emoji = ["Noto Color Emoji"];
+        sansSerif = ["IPAexGothic" "Noto Color Emoji"];
+        monospace = ["HackGen Console NF" "Noto Color Emoji"];
+        emoji = ["Noto Color Emoji"];
       };
     };
   };
@@ -192,8 +193,8 @@
       enable = true;
       qemu = {
         swtpm.enable = true;
-	ovmf.enable = true;
-	ovmf.packages = [ pkgs.OVMFFull.fd ];
+        ovmf.enable = true;
+        ovmf.packages = [ pkgs.OVMFFull.fd ];
       };
     };
     spiceUSBRedirection.enable = true;
