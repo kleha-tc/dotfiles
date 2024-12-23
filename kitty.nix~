@@ -1,0 +1,9 @@
+{ pkgs, ... }:
+{
+	programs.kitty = {
+		enable = true;
+		enableZshIntegration = true;
+		themeFile = "catppuccin-frappe";
+		}
+	}
+}

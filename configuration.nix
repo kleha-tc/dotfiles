@@ -106,7 +106,9 @@
       typst
       satysfi
       obsidian
-    ];
+			tree-sitter
+			ngspice
+		];
     shell = pkgs.zsh;
   };
 
@@ -129,6 +131,7 @@
     obs-studio
     win-virtio
     deno
+		gcc
   ];
 
   programs = {

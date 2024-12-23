@@ -1,0 +1,3 @@
+[[plugins]]
+repo = "windwp/nvim-ts-autotag"
+FileType = "typescript"
