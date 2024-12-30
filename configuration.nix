@@ -113,6 +113,7 @@
 			ngspice
 			bottles
 			kicad
+			kdePackages.kdeconnect-kde
 		];
     shell = pkgs.zsh;
   };
@@ -139,6 +140,7 @@
     deno
 		gcc
 		docker
+		trashy
   ];
 
   programs = {

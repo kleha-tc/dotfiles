@@ -1,4 +1,34 @@
 { pkgs, ... }:
+let
+	fern-git-status = pkgs.vimUtils.buildVimPlugin {
+		name = "vim-fern-git-status";
+		src = builtins.fetchGit {
+			url = "https://github.com/lambdalisue/vim-fern-git-status";
+			rev = "151336335d3b6975153dad77e60049ca7111da8e";
+		};
+	};
+	fern-renderer-nerdfont = pkgs.vimUtils.buildVimPlugin {
+		name = "vim-fern-renderer-nerdfont";
+		src = builtins.fetchGit {
+			url = "https://github.com/lambdalisue/vim-fern-renderer-nerdfont";
+			rev = "325629c68eb543229715b68920fbcb92b206beb6";
+		};
+	};
+	vim-nerdfont = pkgs.vimUtils.buildVimPlugin {
+		name = "vim-nerdfont";
+		src = builtins.fetchGit {
+			url = "https://github.com/lambdalisue/vim-nerdfont";
+			rev = "e054fd135ee73db37cd5bf545e0ff9948ffec7bc";
+		};
+	};
+	glyph-palette = pkgs.vimUtils.buildVimPlugin {
+		name = "glyph-palette";
+		src = builtins.fetchGit {
+			url = "https://github.com/lambdalisue/vim-glyph-palette";
+			rev = "1ee16c232c5538f34bb47c3dd0f6b369fdd7c555";
+		};
+	};
+in
 {
 	programs.neovim = {
 		enable = true;
@@ -57,21 +87,31 @@
 			nvim-treesitter-parsers.dockerfile
 			nvim-treesitter-parsers.git_config
 			nvim-treesitter-parsers.gitattributes
+			nvim-lspconfig
 			{ plugin = vim-fern; optional = true; }
 			{ plugin = telescope-nvim; optional = true; }
 			{ plugin = telescope-github-nvim; optional = true; }
+			{ plugin = fern-git-status; optional = true; }
+			{ plugin = fern-renderer-nerdfont; optional = true; }
+			{ plugin = vim-nerdfont; optional = true; }
+			{ plugin = glyph-palette; optional = true; }
 		];
 		extraLuaConfig = ''
 			-- require("000_dpp")
 			require("001_treesitter")
 			require("002_telescope")
 			require("003_fern")
+			require("004_color")
+			require("005_lsp")
 			require("101_main")
+			require("102_keymap")
 		'';
 		extraPackages = with pkgs; [
 			deno
 			ripgrep
 			fd
+			trash-cli
+			tinymist
 		];
   };
   xdg.configFile = {
@@ -82,7 +122,10 @@
 		"nvim/lua/001_treesitter.lua".source = ./lua/001_treesitter.lua;
 		"nvim/lua/002_telescope.lua".source = ./lua/002_telescope.lua;
 		"nvim/lua/003_fern.lua".source = ./lua/003_fern.lua;
+		"nvim/lua/004_color.lua".source = ./lua/004_color.lua;
+		"nvim/lua/005_lsp.lua".source = ./lua/005_lsp.lua;
 		"nvim/lua/101_main.lua".source = ./lua/101_main.lua;
+		"nvim/lua/102_keymap.lua".source = ./lua/102_keymap.lua;
 		"nvim/dpp.ts".source = ./dpp.ts;
 		"nvim/dpp.toml".source = ./dpp.toml;
 		"nvim/dpp_lazy.toml".source = ./dpp_lazy.toml;

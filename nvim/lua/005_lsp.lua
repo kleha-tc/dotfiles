@@ -1,0 +1,1 @@
+require("lspconfig").tinymist.setup{}

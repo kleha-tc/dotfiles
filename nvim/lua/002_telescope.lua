@@ -5,7 +5,6 @@ vim.api.nvim_create_autocmd( "VimEnter", {
 		vim.cmd.packadd("telescope.nvim")
 		require("telescope").setup()
 		telescope_set_keymap()
-		print("finish loading telescope.nvim")
 	end
 })
 
