@@ -1,1 +1,1 @@
-vim.fn["packadd!"](fern-vim)
+vim.cmd.packadd("vim-fern")

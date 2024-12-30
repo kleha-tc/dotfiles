@@ -55,6 +55,9 @@
   };
   services.desktopManager.plasma6.enable = true;
 
+	# Enable polkit
+	security.polkit.enable = true;
+
   # Configure keymap in X11
   services.xserver.xkb = {
     layout = "us";
@@ -87,7 +90,7 @@
   users.users.kleha = {
     isNormalUser = true;
     description = "Kleha";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" ];
     packages = with pkgs; [
       kdePackages.kate
       thunderbird
@@ -108,6 +111,8 @@
       obsidian
 			tree-sitter
 			ngspice
+			bottles
+			kicad
 		];
     shell = pkgs.zsh;
   };
@@ -123,6 +128,7 @@
   environment.systemPackages = with pkgs; [
      # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
+		sway
     emacs-nox
     libskk
     skktools
@@ -132,6 +138,7 @@
     win-virtio
     deno
 		gcc
+		docker
   ];
 
   programs = {

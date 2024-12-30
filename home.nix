@@ -9,6 +9,7 @@
     ./nvim
 		./code
     ./kitty.nix
+		./sway
   ];
   programs = {
     git = {

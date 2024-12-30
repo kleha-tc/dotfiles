@@ -7,6 +7,8 @@
 		vimdiffAlias = true;
 		withNodeJs = true;
 		plugins = with pkgs.vimPlugins; [
+			denops-vim
+			catppuccin-nvim
 			nvim-treesitter
 			nvim-treesitter-parsers.r
 			nvim-treesitter-parsers.c
@@ -60,23 +62,27 @@
 			{ plugin = telescope-github-nvim; optional = true; }
 		];
 		extraLuaConfig = ''
-			require("999_dpp")
-			require("001_main")
+			-- require("000_dpp")
+			require("001_treesitter")
+			require("002_telescope")
+			require("003_fern")
+			require("101_main")
 		'';
 		extraPackages = with pkgs; [
 			deno
 			ripgrep
 			fd
-			vimPlugins.denops-vim
-			vimPlugins.catppuccin-nvim
 		];
   };
   xdg.configFile = {
-		"nvim/lua/999_dpp.lua".source = pkgs.substituteAll {
-			src = ./lua/999_dpp.lua;
-			denopsSrc = pkgs.vimPlugins.denops-vim;
-		};
-		"nvim/lua/001_main.lua".source = ./lua/001_main.lua;
+		# "nvim/lua/000_dpp.lua".source = pkgs.substituteAll {
+		#  	src = ./lua/000_dpp.lua;
+		# 	denopsSrc = pkgs.vimPlugins.denops-vim;
+		# };
+		"nvim/lua/001_treesitter.lua".source = ./lua/001_treesitter.lua;
+		"nvim/lua/002_telescope.lua".source = ./lua/002_telescope.lua;
+		"nvim/lua/003_fern.lua".source = ./lua/003_fern.lua;
+		"nvim/lua/101_main.lua".source = ./lua/101_main.lua;
 		"nvim/dpp.ts".source = ./dpp.ts;
 		"nvim/dpp.toml".source = ./dpp.toml;
 		"nvim/dpp_lazy.toml".source = ./dpp_lazy.toml;
