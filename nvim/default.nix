@@ -110,6 +110,7 @@ in
 			{ plugin = ddc-filter-sorter_rank; optional = true; }
 			{ plugin = ddc-filter-matcher_head; optional = true; }
 			{ plugin = ddc-ui-pum; optional = true; }
+			{ plugin = ddc-source-lsp; optional = true; }
 		];
 		extraLuaConfig = ''
 			-- require("000_dpp")
