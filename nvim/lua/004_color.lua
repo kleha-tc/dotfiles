@@ -28,7 +28,6 @@ require("catppuccin").setup({
         properties = {},
         types = {},
         operators = {},
-        -- miscs = {}, -- Uncomment to turn off hard-coded styles
     },
     color_overrides = {},
     custom_highlights = {},

@@ -28,6 +28,13 @@ let
 			rev = "1ee16c232c5538f34bb47c3dd0f6b369fdd7c555";
 		};
 	};
+	ddc-source-around = pkgs.vimUtils.buildVimPlugin {
+		name = "ddc-source-around";
+		src = builtins.fetchGit {
+			url = "https://github.com/Shougo/ddc-source-around";
+			rev = "32d54dc188b50bcd64f7b410c04aa4ec567ae47f";
+		};
+	};
 in
 {
 	programs.neovim = {
@@ -37,7 +44,9 @@ in
 		vimdiffAlias = true;
 		withNodeJs = true;
 		plugins = with pkgs.vimPlugins; [
+			noice-nvim
 			denops-vim
+			lualine-nvim
 			catppuccin-nvim
 			nvim-treesitter
 			nvim-treesitter-parsers.r
@@ -95,6 +104,12 @@ in
 			{ plugin = fern-renderer-nerdfont; optional = true; }
 			{ plugin = vim-nerdfont; optional = true; }
 			{ plugin = glyph-palette; optional = true; }
+			{ plugin = which-key-nvim; optional = true; }
+			{ plugin = ddc-vim; optional = true; }
+			{ plugin = ddc-source-around; optional = true; }
+			{ plugin = ddc-filter-sorter_rank; optional = true; }
+			{ plugin = ddc-filter-matcher_head; optional = true; }
+			{ plugin = ddc-ui-pum; optional = true; }
 		];
 		extraLuaConfig = ''
 			-- require("000_dpp")
@@ -103,6 +118,10 @@ in
 			require("003_fern")
 			require("004_color")
 			require("005_lsp")
+			require("006_lualine")
+			require("007_noice")
+			require("008_which-key")
+			require("009_ddc")
 			require("101_main")
 			require("102_keymap")
 		'';
@@ -112,6 +131,7 @@ in
 			fd
 			trash-cli
 			tinymist
+			lua-language-server
 		];
   };
   xdg.configFile = {
@@ -119,11 +139,16 @@ in
 		#  	src = ./lua/000_dpp.lua;
 		# 	denopsSrc = pkgs.vimPlugins.denops-vim;
 		# };
+		"nvim/luarc.json".source = ./luarc.json;
 		"nvim/lua/001_treesitter.lua".source = ./lua/001_treesitter.lua;
 		"nvim/lua/002_telescope.lua".source = ./lua/002_telescope.lua;
 		"nvim/lua/003_fern.lua".source = ./lua/003_fern.lua;
 		"nvim/lua/004_color.lua".source = ./lua/004_color.lua;
 		"nvim/lua/005_lsp.lua".source = ./lua/005_lsp.lua;
+		"nvim/lua/006_lualine.lua".source = ./lua/006_lualine.lua;
+		"nvim/lua/007_noice.lua".source = ./lua/007_noice.lua;
+		"nvim/lua/008_which-key.lua".source = ./lua/008_which-key.lua;
+		"nvim/lua/009_ddc.lua".source = ./lua/009_ddc.lua;
 		"nvim/lua/101_main.lua".source = ./lua/101_main.lua;
 		"nvim/lua/102_keymap.lua".source = ./lua/102_keymap.lua;
 		"nvim/dpp.ts".source = ./dpp.ts;
