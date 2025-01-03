@@ -9,14 +9,14 @@ local function enable_ddc()
 	cmd.packadd("vimplugin-ddc-source-around")
 	cmd.packadd("vimplugin-ddc-source-nvim-lua")
 	cmd.packadd("vimplugin-ddc-source-file")
-	cmd.packadd("vimplugin-skkeleton")
+	-- cmd.packadd("vimplugin-skkeleton")
 	cmd.packadd("ddc-filter-sorter_rank")
 	cmd.packadd("ddc-filter-matcher_head")
 end
 
 local function setup_ddc()
 	fn["ddc#custom#patch_global"]("ui", "pum")
-	fn["ddc#custom#patch_global"]("sources", {"lsp", "around", "file", "skkeleton"})
+	fn["ddc#custom#patch_global"]("sources", {"lsp", "around", "file"})
 	fn["ddc#custom#patch_global"]("sourceOptions", {
 		_ = {
 			matchers = {"matcher_head"},
@@ -31,13 +31,13 @@ local function setup_ddc()
 		around = {
 			mark = "A"
 		},
-		skkeleton = {
-			mark = "skk",
-			matchers = {},
-			sorters = {},
-			isVolatile = true,
-			minAutoCompleteLength = 1
-		}
+		-- skkeleton = {
+		-- 	mark = "skk",
+		-- 	matchers = {},
+		-- 	sorters = {},
+		-- 	isVolatile = true,
+		-- 	minAutoCompleteLength = 1
+		-- }
 	})
 	fn["ddc#custom#patch_filetype"]("lua", "sources", {"nvim-lua"})
 	fn["ddc#enable"]()
@@ -68,7 +68,7 @@ vim.api.nvim_create_autocmd("InsertEnter", {
 	callback = function()
 		enable_ddc()
 		setup_pum()
-		setup_skk()
+		-- setup_skk()
 		setup_ddc()
 		print("ddc setup is finished")
 	end
