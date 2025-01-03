@@ -35,6 +35,27 @@ let
 			rev = "32d54dc188b50bcd64f7b410c04aa4ec567ae47f";
 		};
 	};
+	ddc-source-nvim-lua = pkgs.vimUtils.buildVimPlugin {
+		name = "ddc-source-nvim-lua";
+		src = builtins.fetchGit {
+			url = "https://github.com/uga-rosa/ddc-source-nvim-lua";
+			rev = "2b0d0f47efa14d7e7ac2c473861b095dcf99f020";
+		};
+	};
+	ddc-source-file = pkgs.vimUtils.buildVimPlugin {
+		name = "ddc-source-file";
+		src = builtins.fetchGit {
+			url = "https://github.com/LumaKernel/ddc-source-file";
+			rev = "34b362d45957183b4ec99d618a19a5f5f517c365";
+		};
+	};
+	skkeleton = pkgs.vimUtils.buildVimPlugin {
+		name = "skkeleton";
+		src = builtins.fetchGit {
+			url = "https://github.com/vim-skk/skkeleton";
+			rev = "954f2f96e74a0c409f12315278fb1bbef0286b60";
+		};
+	};
 in
 {
 	programs.neovim = {
@@ -98,6 +119,7 @@ in
 			nvim-treesitter-parsers.gitattributes
 			nvim-lspconfig
 			{ plugin = vim-fern; optional = true; }
+			{ plugin = skkeleton; optional = true; }
 			{ plugin = telescope-nvim; optional = true; }
 			{ plugin = telescope-github-nvim; optional = true; }
 			{ plugin = fern-git-status; optional = true; }
@@ -106,11 +128,13 @@ in
 			{ plugin = glyph-palette; optional = true; }
 			{ plugin = which-key-nvim; optional = true; }
 			{ plugin = ddc-vim; optional = true; }
+			{ plugin = ddc-source-lsp; optional = true; }
+			{ plugin = ddc-source-file; optional = true; }
 			{ plugin = ddc-source-around; optional = true; }
+			{ plugin = ddc-source-nvim-lua; optional = true; }
 			{ plugin = ddc-filter-sorter_rank; optional = true; }
 			{ plugin = ddc-filter-matcher_head; optional = true; }
 			{ plugin = ddc-ui-pum; optional = true; }
-			{ plugin = ddc-source-lsp; optional = true; }
 		];
 		extraLuaConfig = ''
 			-- require("000_dpp")
@@ -137,7 +161,7 @@ in
   };
   xdg.configFile = {
 		# "nvim/lua/000_dpp.lua".source = pkgs.substituteAll {
-		#  	src = ./lua/000_dpp.lua;
+		 # 	src = ./lua/000_dpp.lua;
 		# 	denopsSrc = pkgs.vimPlugins.denops-vim;
 		# };
 		"nvim/luarc.json".source = ./luarc.json;
@@ -152,38 +176,38 @@ in
 		"nvim/lua/009_ddc.lua".source = ./lua/009_ddc.lua;
 		"nvim/lua/101_main.lua".source = ./lua/101_main.lua;
 		"nvim/lua/102_keymap.lua".source = ./lua/102_keymap.lua;
-		"nvim/dpp.ts".source = ./dpp.ts;
-		"nvim/dpp.toml".source = ./dpp.toml;
-		"nvim/dpp_lazy.toml".source = ./dpp_lazy.toml;
+		# "nvim/dpp.ts".source = ./dpp.ts;
+		# "nvim/dpp.toml".source = ./dpp.toml;
+		# "nvim/dpp_lazy.toml".source = ./dpp_lazy.toml;
 	};
-	home.file = {
-		".cache/dpp/dpp.vim".source = builtins.fetchGit {
-			url = "https://github.com/Shougo/dpp.vim";
-			rev = "b839d192dd2aee2423acd1cbb978f157e5967900";
-		};
-		".cache/dpp/dpp-ext-local".source = builtins.fetchGit {
-			url = "https://github.com/Shougo/dpp-ext-local";
-			rev = "3e0ea1083121b42a4d619b3e77aa9a919db5cdae";
-		};
-		".cache/dpp/dpp-ext-lazy".source = builtins.fetchGit {
-			url = "https://github.com/Shougo/dpp-ext-lazy";
-			rev = "0c02f386125929ce8c9eecba23389d686ace1a62";
-		};
-		".cache/dpp/dpp-ext-installer".source = builtins.fetchGit {
-			url = "https://github.com/Shougo/dpp-ext-installer";
-			rev = "5e325980819156c089b4b32e42c0251db474222f";
-		};
-		".cache/dpp/dpp-ext-toml".source = builtins.fetchGit {
-			url = "https://github.com/Shougo/dpp-ext-toml";
-			rev = "31f2d109af41129c9e866f300d7aeda1bf536624";
-		};
-		".cache/dpp/dpp-protocol-git".source = builtins.fetchGit {
-			url = "https://github.com/Shougo/dpp-protocol-git";
-			rev = "ad3e1d12418e0ff811a92f20a0562d9cf34ab6f3";
-		};
-		"works/catppuccin-nvim".source = pkgs.vimPlugins.catppuccin-nvim;
-		"works/fern.vim".source = pkgs.vimPlugins.vim-fern;
-		"works/telescope.nvim".source = pkgs.vimPlugins.telescope-nvim;
-		"works/telescope-github".source = pkgs.vimPlugins.telescope-github-nvim;
-	};
+	# home.file = {
+		# ".cache/dpp/dpp.vim".source = builtins.fetchGit {
+		# 	url = "https://github.com/Shougo/dpp.vim";
+		# 	rev = "b839d192dd2aee2423acd1cbb978f157e5967900";
+		# };
+		# ".cache/dpp/dpp-ext-local".source = builtins.fetchGit {
+		# 	url = "https://github.com/Shougo/dpp-ext-local";
+		# 	rev = "3e0ea1083121b42a4d619b3e77aa9a919db5cdae";
+		# };
+		# ".cache/dpp/dpp-ext-lazy".source = builtins.fetchGit {
+		# 	url = "https://github.com/Shougo/dpp-ext-lazy";
+		# 	rev = "0c02f386125929ce8c9eecba23389d686ace1a62";
+		# };
+		# ".cache/dpp/dpp-ext-installer".source = builtins.fetchGit {
+		# 	url = "https://github.com/Shougo/dpp-ext-installer";
+		# 	rev = "5e325980819156c089b4b32e42c0251db474222f";
+		# };
+		# ".cache/dpp/dpp-ext-toml".source = builtins.fetchGit {
+		# 	url = "https://github.com/Shougo/dpp-ext-toml";
+		# 	rev = "31f2d109af41129c9e866f300d7aeda1bf536624";
+		# };
+		# ".cache/dpp/dpp-protocol-git".source = builtins.fetchGit {
+		# 	url = "https://github.com/Shougo/dpp-protocol-git";
+		# 	rev = "ad3e1d12418e0ff811a92f20a0562d9cf34ab6f3";
+		# };
+		# "works/catppuccin-nvim".source = pkgs.vimPlugins.catppuccin-nvim;
+		# "works/fern.vim".source = pkgs.vimPlugins.vim-fern;
+		# "works/telescope.nvim".source = pkgs.vimPlugins.telescope-nvim;
+		# "works/telescope-github".source = pkgs.vimPlugins.telescope-github-nvim;
+	# };
 }
