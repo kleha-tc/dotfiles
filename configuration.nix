@@ -114,6 +114,8 @@
 			bottles
 			kicad
 			kdePackages.kdeconnect-kde
+			wezterm
+			alacritty
 		];
     shell = pkgs.zsh;
   };

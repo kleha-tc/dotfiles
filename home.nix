@@ -43,9 +43,9 @@
     };
   };
 	home.file = {
-		"~/.skk/SKK-JISYO.L".source = ./skk/SKK-JIYO.L;
-		"~/.skk/SKK-JISYO.jinmei".source = ./skk/SKK-JISYO.jinmei;
-		"~/.skk/SKK-JISYO.station".source = ./skk/SKK-JISYO.station;
+		"skk/SKK-JISYO.L".source = ./skk/SKK-JISYO.L.UTF8;
+		"skk/SKK-JISYO.jinmei".source = ./skk/SKK-JISYO.jinmei;
+		"skk/SKK-JISYO.station".source = ./skk/SKK-JISYO.station;
 	};
 }
 

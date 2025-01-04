@@ -65,10 +65,13 @@ in
 		vimdiffAlias = true;
 		withNodeJs = true;
 		plugins = with pkgs.vimPlugins; [
-			noice-nvim
 			denops-vim
+			# ui
+			noice-nvim
+			fidget-nvim
 			lualine-nvim
 			catppuccin-nvim
+			# Tree-sitter
 			nvim-treesitter
 			nvim-treesitter-parsers.r
 			nvim-treesitter-parsers.c
@@ -117,16 +120,23 @@ in
 			nvim-treesitter-parsers.dockerfile
 			nvim-treesitter-parsers.git_config
 			nvim-treesitter-parsers.gitattributes
+			# lsp
 			nvim-lspconfig
+			# SKK
+			skkeleton
+			# Lazy load plugins
+			# ui
 			{ plugin = vim-fern; optional = true; }
-			{ plugin = skkeleton; optional = true; }
+			{ plugin = which-key-nvim; optional = true; }
+			# Telescope
 			{ plugin = telescope-nvim; optional = true; }
 			{ plugin = telescope-github-nvim; optional = true; }
+			# vim-fern
 			{ plugin = fern-git-status; optional = true; }
 			{ plugin = fern-renderer-nerdfont; optional = true; }
 			{ plugin = vim-nerdfont; optional = true; }
 			{ plugin = glyph-palette; optional = true; }
-			{ plugin = which-key-nvim; optional = true; }
+			# ddc
 			{ plugin = ddc-vim; optional = true; }
 			{ plugin = ddc-source-lsp; optional = true; }
 			{ plugin = ddc-source-file; optional = true; }
@@ -135,6 +145,11 @@ in
 			{ plugin = ddc-filter-sorter_rank; optional = true; }
 			{ plugin = ddc-filter-matcher_head; optional = true; }
 			{ plugin = ddc-ui-pum; optional = true; }
+			# DAP
+			{ plugin = nvim-dap; optional = true; }
+			{ plugin = nvim-dap-ui; optional = true; }
+			# Other
+			{ plugin = nvim-ts-autotag; optional = true; }
 		];
 		extraLuaConfig = ''
 			-- require("000_dpp")
@@ -147,16 +162,24 @@ in
 			require("007_noice")
 			require("008_which-key")
 			require("009_ddc")
+			require("010_autotag")
 			require("101_main")
 			require("102_keymap")
 		'';
 		extraPackages = with pkgs; [
 			deno
+			# Telescope dependencies
 			ripgrep
 			fd
+			# CLI Trash Utility
+			# Fern dependencies
 			trash-cli
-			tinymist
-			lua-language-server
+			# LSP
+			gopls # Go
+			tinymist # Typst
+			clang-tools # C/C++
+			lua-language-server # Lua
+			typescript-language-server #TypeScript
 		];
   };
   xdg.configFile = {
@@ -174,6 +197,7 @@ in
 		"nvim/lua/007_noice.lua".source = ./lua/007_noice.lua;
 		"nvim/lua/008_which-key.lua".source = ./lua/008_which-key.lua;
 		"nvim/lua/009_ddc.lua".source = ./lua/009_ddc.lua;
+		"nvim/lua/010_autotag.lua".source = ./lua/010_autotag.lua;
 		"nvim/lua/101_main.lua".source = ./lua/101_main.lua;
 		"nvim/lua/102_keymap.lua".source = ./lua/102_keymap.lua;
 		# "nvim/dpp.ts".source = ./dpp.ts;
