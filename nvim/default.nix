@@ -56,6 +56,13 @@ let
 			rev = "954f2f96e74a0c409f12315278fb1bbef0286b60";
 		};
 	};
+	skkeleton_indicator = pkgs.vimUtils.buildVimPlugin {
+		name = "skkeleton_indicator.nvim";
+		src = builtins.fetchGit {
+			url = "https://github.com/delphinus/skkeleton_indicator.nvim";
+			rev = "d9b649d734ca7d3871c4f124004771d0213dc747";
+		};
+	};
 in
 {
 	programs.neovim = {
@@ -124,6 +131,7 @@ in
 			nvim-lspconfig
 			# SKK
 			skkeleton
+			skkeleton_indicator
 			# Lazy load plugins
 			# ui
 			{ plugin = vim-fern; optional = true; }

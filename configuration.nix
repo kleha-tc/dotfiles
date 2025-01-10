@@ -86,6 +86,28 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
+	# Enable Nvidia GPU support
+
+	hardware.graphics = {
+		enable = true;
+	};
+
+	services.xserver.videoDrivers = ["nvidia"];
+
+	hardware.nvidia = {
+		modesetting.enable = true;
+		powerManagement.enable = false;
+		powerManagement.finegrained = false;
+		open = false;
+		nvidiaSettings = true;
+		package = config.boot.kernelPackages.nvidiaPackages.vulkan_beta;
+		prime = {
+			sync.enable = true;
+			intelBusId = "PCI:0:2:0";
+			nvidiaBusId = "PCI:1:0:0";
+		};
+	};
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.kleha = {
     isNormalUser = true;
@@ -116,9 +138,17 @@
 			kdePackages.kdeconnect-kde
 			wezterm
 			alacritty
+			nodejs
+			pnpm
+			realvnc-vnc-viewer
 		];
     shell = pkgs.zsh;
   };
+
+	services.emacs = {
+		enable = true;
+		package = pkgs.emacs-nox;
+	};
 
   # Install firefox.
   programs.firefox.enable = true;
@@ -132,7 +162,6 @@
      # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
 		sway
-    emacs-nox
     libskk
     skktools
     fcitx5-configtool
@@ -143,6 +172,9 @@
 		gcc
 		docker
 		trashy
+		vulkan-tools
+		usbutils
+		#ghostty
   ];
 
   programs = {
@@ -203,6 +235,7 @@
   # VM
   
   virtualisation = {
+		docker.enable = true;
     libvirtd = {
       enable = true;
       qemu = {

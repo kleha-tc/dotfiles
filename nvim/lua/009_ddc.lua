@@ -43,18 +43,20 @@ local function setup_ddc()
 end
 
 local function setup_pum()
-	set("i", "<C-n>", "<cmd>call pum#map#select_relative(+1)<CR>")
-	set("i", "<C-p>", "<cmd>call pum#map#select_relative(-1)<CR>")
+	set("i", "<C-n>", "<cmd>call pum#map#insert_relative(+1)<CR>")
+	set("i", "<C-p>", "<cmd>call pum#map#insert_relative(-1)<CR>")
 	set("i", "<C-y>", "<cmd>call pum#map#confirm()<CR>")
 	set("i", "<C-e>", "<cmd>call pum#map#cancel()<CR>")
 end
 
 local function setup_skk()
 	cmd.packadd("vimplugin-skkeleton")
+	cmd.packadd("vimplugin-skkeleton_indicator.nvim")
 	fn["skkeleton#config"]({
-		globalDictionaries = {"~/skk/SKK-JISYO.L"},
+		globalDictionaries = {"~/skk/SKK-JISYO.L", "~/skk/SKK-JISYO.jinmei", "~/skk/SKK-JISYO.station"},
 		eggLikeNewline = true,
 	})
+	require("skkeleton_indicator").setup()
 	set("i", "<C-j>", "<Plug>(skkeleton-toggle)")
 	set("c", "<C-j>", "<Plug>(skkeleton-toggle)")
 	set("t", "<C-j>", "<Plug>(skkeleton-toggle)")

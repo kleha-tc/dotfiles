@@ -10,6 +10,7 @@
 		./code
     ./kitty.nix
 		./sway
+		./emacs
   ];
   programs = {
     git = {
@@ -43,7 +44,7 @@
     };
   };
 	home.file = {
-		"skk/SKK-JISYO.L".source = ./skk/SKK-JISYO.L.UTF8;
+		"skk/SKK-JISYO.L".source = ./skk/SKK-JISYO.L;
 		"skk/SKK-JISYO.jinmei".source = ./skk/SKK-JISYO.jinmei;
 		"skk/SKK-JISYO.station".source = ./skk/SKK-JISYO.station;
 	};
