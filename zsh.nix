@@ -1,6 +1,6 @@
 { pkgs, ...}:
 {
-	zsh = {
+	programs.zsh = {
 		enable = true;
 		shellAliases = {
 			ls = "eza --git --icons=auto";
