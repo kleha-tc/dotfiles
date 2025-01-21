@@ -1,0 +1,70 @@
+#+TITLE: Emacs Configuration
+#+STARTUP: overview
+
+* Base
+
+* UI
+
+** Color Theme
+
+[[https://github.com/catppuccin/emacs][catppuccin/emacs]]
+#+begin_src emacs-lisp
+  (load-theme 'catppuccin :no-confirm)
+  (setq catppuccin-fravor 'frappe)
+  (catppuccin-reload)
+#+end_src
+
+* Language
+
+** ddskk
+
+[[https://github.com/skk-dev/ddskk][skk-dev/ddskk]]
+#+begin_src emacs-lisp
+  (require 'ddskk)
+  (defun my/enable-skk ()
+    (skk-latin-mode 1))
+  (add-hook 'find-file-hooks 'my/enable-skk)
+#+end_src
+
+* Utility
+
+** NeoTree
+
+[[https://github.com/jaypei/emacs-neotree][jaypei/emacs-neotree]]
+#+begin_src emacs-lisp
+  (require 'neotree)
+  (global-set-key [f8] 'neotree-toggle)
+#+end_src
+
+* Programming
+
+* Org
+
+** init
+
+#+begin_src emacs-lisp
+  (defun my-org-init ()
+  )
+  (add-hook 'org-mode-hook 'my-org-init)
+#+end_src
+
+** Structure Template
+
+enable Org Tempo
+[[https://orgmode.org/manual/Structure-Templates.html][structure template - orgmode.org]]
+
+#+begin_src emacs-lisp
+  (require 'org-tempo)
+#+end_src
+
+#+begin_export latex
+$$ x = \frac{ -b \pm \sqrt{ b^2 - 4ac } }{ 2a } $$
+#+end_export
+
+** Org-babel
+
+#+begin_src emacs-lisp
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((python .t)))
+#+end_src

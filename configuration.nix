@@ -138,8 +138,6 @@
 			kdePackages.kdeconnect-kde
 			wezterm
 			alacritty
-			nodejs
-			pnpm
 			realvnc-vnc-viewer
 		];
     shell = pkgs.zsh;

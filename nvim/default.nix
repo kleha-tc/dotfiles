@@ -188,6 +188,7 @@ in
 			clang-tools # C/C++
 			lua-language-server # Lua
 			typescript-language-server #TypeScript
+			python312Packages.python-lsp-server # python
 		];
   };
   xdg.configFile = {

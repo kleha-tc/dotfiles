@@ -1,0 +1,26 @@
+#+TITLE: Emacs Configuration
+#+STARTUP: overview
+
+* Base
+
+* UI
+
+** Color Theme
+
+[[https://github.com/catppuccin/emacs][catppuccin/emacs]]
+
+#+begin_src emacs-lisp
+  (load-theme 'catppuccin :no-confirm)
+  (setq catppuccin-fravor 'frappe)
+  (catppuccin-reload)
+#+end_src
+
+
+* Language
+
+* Utility
+
+* Programming
+
+* Org
+
