@@ -10,6 +10,8 @@
 		./code
 		./sway
 		./emacs
+		./wezterm
+		./hyprland
 		./git.nix
 		./eza.nix
 		./zsh.nix

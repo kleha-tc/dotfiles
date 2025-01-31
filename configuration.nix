@@ -18,7 +18,7 @@
   ];
 
   networking.hostName = "nixos"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  networking.wireless.iwd.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -47,13 +47,18 @@
 
   # Enable the X11 windowing system.
   # You can disable this if you're only using the Wayland session.
-  services.xserver.enable = true;
+  # services.xserver.enable = true;
 
   # Enable the KDE Plasma Desktop Environment.
   services.displayManager.sddm = {
     enable = true;
+	  wayland.enable = true;
   };
   services.desktopManager.plasma6.enable = true;
+
+	# Enable Budgie Desktop Environment
+
+	# services.xserver.desktopManager.budgie.enable = true;
 
 	# Enable polkit
 	security.polkit.enable = true;
@@ -100,7 +105,7 @@
 		powerManagement.finegrained = false;
 		open = false;
 		nvidiaSettings = true;
-		package = config.boot.kernelPackages.nvidiaPackages.vulkan_beta;
+		package = config.boot.kernelPackages.nvidiaPackages.stable;
 		prime = {
 			sync.enable = true;
 			intelBusId = "PCI:0:2:0";
@@ -121,7 +126,6 @@
       slack
       onlyoffice-desktopeditors
       libreoffice
-      conda
       freecad-wayland
       blender
       openscad
@@ -134,9 +138,8 @@
 			tree-sitter
 			ngspice
 			bottles
-			kicad
 			kdePackages.kdeconnect-kde
-			wezterm
+			kdePackages.okular
 			alacritty
 			realvnc-vnc-viewer
 		];
@@ -159,11 +162,9 @@
   environment.systemPackages = with pkgs; [
      # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
-		sway
     libskk
     skktools
     fcitx5-configtool
-    python314
     obs-studio
     win-virtio
     deno
@@ -172,7 +173,7 @@
 		trashy
 		vulkan-tools
 		usbutils
-		#ghostty
+		ghostty
   ];
 
   programs = {

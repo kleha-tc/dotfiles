@@ -10,7 +10,7 @@
 			rust-lang.rust-analyzer
 			mechatroner.rainbow-csv
 			jnoortheen.nix-ide
-			nvarner.typst-lsp
+			myriad-dreamin.tinymist
 			tomoki1207.pdf
 		];
 	};

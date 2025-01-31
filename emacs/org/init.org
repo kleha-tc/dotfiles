@@ -3,6 +3,12 @@
 
 * Base
 
+** Tab Width
+
+#+begin_src emacs-lisp
+  (setq default-tab-width 2)
+#+end_src
+
 * UI
 
 ** Color Theme
@@ -10,8 +16,6 @@
 [[https://github.com/catppuccin/emacs][catppuccin/emacs]]
 #+begin_src emacs-lisp
   (load-theme 'catppuccin :no-confirm)
-  (setq catppuccin-fravor 'frappe)
-  (catppuccin-reload)
 #+end_src
 
 * Language
@@ -21,6 +25,7 @@
 [[https://github.com/skk-dev/ddskk][skk-dev/ddskk]]
 #+begin_src emacs-lisp
   (require 'ddskk)
+  (setq skk-large-jisyo "~/skk/SKK-JISYO.L")
   (defun my/enable-skk ()
     (skk-latin-mode 1))
   (add-hook 'find-file-hooks 'my/enable-skk)
@@ -39,7 +44,6 @@
 * Programming
 
 * Org
-
 ** init
 
 #+begin_src emacs-lisp
@@ -57,14 +61,33 @@ enable Org Tempo
   (require 'org-tempo)
 #+end_src
 
-#+begin_export latex
-$$ x = \frac{ -b \pm \sqrt{ b^2 - 4ac } }{ 2a } $$
-#+end_export
-
-** Org-babel
+** Org-babel Enable
 
 #+begin_src emacs-lisp
   (org-babel-do-load-languages
-   'org-babel-load-languages
-   '((python .t)))
+    'org-babel-load-languages
+    '(
+      (rust .t)
+    )
+  )
+#+end_src
+
+** Org-babel Languages
+
+*** Org-Nix-Shell
+
+[[https://github.com/AntonHakansson/org-nix-shell][org-nix-shell]]
+#+begin_src emacs-lisp
+  (require 'org-nix-shell)
+  (add-hook 'org-mode-hook 'org-nix-shell-mode)
+#+end_src
+
+*** ob-rust
+
+[[https://github.com/micanzhang/ob-rust][ob-rust]]
+
+#+begin_src rust
+  fn main() {
+    println!("Hello World");
+  };
 #+end_src

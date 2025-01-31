@@ -51,12 +51,10 @@ end
 
 local function setup_skk()
 	cmd.packadd("vimplugin-skkeleton")
-	cmd.packadd("vimplugin-skkeleton_indicator.nvim")
 	fn["skkeleton#config"]({
 		globalDictionaries = {"~/skk/SKK-JISYO.L", "~/skk/SKK-JISYO.jinmei", "~/skk/SKK-JISYO.station"},
 		eggLikeNewline = true,
 	})
-	require("skkeleton_indicator").setup()
 	set("i", "<C-j>", "<Plug>(skkeleton-toggle)")
 	set("c", "<C-j>", "<Plug>(skkeleton-toggle)")
 	set("t", "<C-j>", "<Plug>(skkeleton-toggle)")
