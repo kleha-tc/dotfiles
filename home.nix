@@ -16,6 +16,7 @@
 		./eza.nix
 		./zsh.nix
 		./kitty.nix
+		./starship.nix
   ];
   programs = {
     gh = {

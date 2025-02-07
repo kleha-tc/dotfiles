@@ -186,7 +186,6 @@
     zsh = {
       enable = true;
     };
-    starship.enable = true;
   };
 
   # Some programs need SUID wrappers, can be configured further or are
