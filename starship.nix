@@ -4,11 +4,11 @@
 		enable = true;
 		settings = {
 			add_newline = true;
-			format = """
+			format = ""
 			[┌─────────────](bold green) $directory$git
 			[│](bold green) $all
 			[└──>](bold green)
-			""";
+			"";
 		};
 	};
 }
