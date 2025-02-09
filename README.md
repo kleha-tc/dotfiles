@@ -6,8 +6,6 @@ My dotfiles with Nix and Home Manager.
 
 - NixOS
 
-[TODO] Create configuration for "Non-NixOS" System
-
 ## Softwares
 
 - kitty: Fast, GPU-based Terminal Emulator
