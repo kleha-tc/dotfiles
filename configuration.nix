@@ -108,11 +108,6 @@
     shell = pkgs.zsh;
   };
 
-	services.emacs = {
-		enable = true;
-		package = pkgs.emacs-nox;
-	};
-
   # Install firefox.
   programs.firefox.enable = true;
 
