@@ -1,6 +1,6 @@
 # dotfile
 
-My dotfiles with Nix and Home Manager.
+My dotfiles for NixOS-WSL with Home Manager.
 
 ## dependencies
 
@@ -8,11 +8,9 @@ My dotfiles with Nix and Home Manager.
 
 ## Softwares
 
-- kitty: Fast, GPU-based Terminal Emulator
-- NeoVim: Extensible, Customizable Vim-based Text Editor
-- Visual Studio Code: A Modern Text Editor Developed by Microsoft
-- Sway: i3-based Window Manager / Wayland Compositter
-- zsh: A Powerful, Interactive Shell
-
+- Neovim: Extensible, Customizable and Modern Vim-based Text Editor
+- Emacs: Powerful and Customizable Text Editor by GNU
+- zsh: Powerful, Interactive and Customizable Shell
+- starsnip: Fast, Modern and infinitely Customizable Prompt
 - Nix: Pure-Functional Package Manager
 
