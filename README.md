@@ -4,7 +4,7 @@ My dotfiles for NixOS-WSL with Home Manager.
 
 ## dependencies
 
-- NixOS-WSL
+- NixOS
 
 ## Softwares
 
