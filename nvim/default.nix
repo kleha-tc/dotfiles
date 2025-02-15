@@ -148,6 +148,9 @@ in
 			# DAP
 			{ plugin = nvim-dap; optional = true; }
 			{ plugin = nvim-dap-ui; optional = true; }
+			# Language
+			## Rust
+			{ plugin = rust-vim; optional = true; }
 			# Other
 			{ plugin = nvim-ts-autotag; optional = true; }
 		];
@@ -178,6 +181,7 @@ in
 			gopls # Go
 			tinymist # Typst
 			clang-tools # C/C++
+			rust-analyzer # Rust
 			lua-language-server # Lua
 			typescript-language-server #TypeScript
 			python312Packages.python-lsp-server # python
@@ -202,7 +206,7 @@ in
 		"nvim/lua/008_which-key.lua".source = ./lua/008_which-key.lua;
 		"nvim/lua/009_ddc.lua".source = ./lua/009_ddc.lua;
 		"nvim/lua/010_autotag.lua".source = ./lua/010_autotag.lua;
-		"nvim/lua/101_main.lua".source = ./lua/101_main.lua;
+		"nvim/lua/101_main.lua".source = ./lua/100_main.lua;
 		"nvim/lua/102_keymap.lua".source = ./lua/102_keymap.lua;
 		# "nvim/dpp.ts".source = ./dpp.ts;
 		# "nvim/dpp.toml".source = ./dpp.toml;

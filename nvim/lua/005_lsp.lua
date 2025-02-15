@@ -56,3 +56,13 @@ au({"BufReadPre", "BufNewFile"}, {
 		lspconfig.ts_ls.setup()
 	end
 })
+
+-- Rust
+
+au({"BufReadPre", "BufNewFile"}, {
+	once = true,
+	pattern = { "*.rs" },
+	callback = function()
+		lspconfig.rust_analyzer.setup{}
+	end
+})
