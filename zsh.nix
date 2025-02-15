@@ -8,6 +8,7 @@
 			la = "eza -a --git --icons=auto";
 			lla = "eza -la --git --icons=auto";
 			lt = "eza --tree --git --icons=auto";
+			ec = "emacsclient -a ''";
 		};
 	};
 }
