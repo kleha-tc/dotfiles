@@ -154,9 +154,9 @@
     };
   };
 
-  # virtualisation = {
-# 		docker.enable = true;
- #  };
+  virtualisation = {
+ 		docker.enable = true;
+  };
 
 
   # List services that you want to enable:
