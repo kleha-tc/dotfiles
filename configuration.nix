@@ -143,6 +143,23 @@
     };
   };
 
+	
+  fonts = {
+    packages = with pkgs; [
+      ipaexfont
+      noto-fonts-emoji
+      hackgen-nf-font
+    ];
+    fontDir.enable = true;
+    fontconfig = {
+      defaultFonts = {
+        serif = ["IPAexMincho" "Noto Color Emoji"];
+        sansSerif = ["IPAexGothic" "Noto Color Emoji"];
+        monospace = ["HackGen Console NF" "Noto Color Emoji"];
+        emoji = ["Noto Color Emoji"];
+      };
+    };
+  };
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
