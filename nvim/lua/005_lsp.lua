@@ -66,3 +66,13 @@ au({"BufReadPre", "BufNewFile"}, {
 		lspconfig.rust_analyzer.setup{}
 	end
 })
+
+-- Haskell
+
+au({"BufReadPre", "BufNewFile"}, {
+	once = true,
+	pattern = { "haskell", "lhaskell", "cabal" },
+	callback = function()
+		lspconfig.hls.setup{}
+	end
+})
