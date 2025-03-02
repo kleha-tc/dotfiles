@@ -71,7 +71,7 @@ au({"BufReadPre", "BufNewFile"}, {
 
 au({"BufReadPre", "BufNewFile"}, {
 	once = true,
-	pattern = { "haskell", "lhaskell", "cabal" },
+	pattern = { "*.hs", "*.cabal" },
 	callback = function()
 		lspconfig.hls.setup{}
 	end
