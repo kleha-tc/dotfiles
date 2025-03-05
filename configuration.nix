@@ -146,16 +146,15 @@
     shell = pkgs.zsh;
   };
 
-	services.emacs = {
-		enable = true;
-		package = pkgs.emacs-nox;
-	};
-
   # Install firefox.
   programs.firefox.enable = true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+
+	# Enable Nix-ld
+
+	programs.nix-ld.enable = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -188,6 +187,23 @@
     };
   };
 
+	
+  fonts = {
+    packages = with pkgs; [
+      ipaexfont
+      noto-fonts-emoji
+      hackgen-nf-font
+    ];
+    fontDir.enable = true;
+    fontconfig = {
+      defaultFonts = {
+        serif = ["IPAexMincho" "Noto Color Emoji"];
+        sansSerif = ["IPAexGothic" "Noto Color Emoji"];
+        monospace = ["HackGen Console NF" "Noto Color Emoji"];
+        emoji = ["Noto Color Emoji"];
+      };
+    };
+  };
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
@@ -246,7 +262,6 @@
   };
   users.groups.libvirtd.members = [ "kleha" ];
   programs.virt-manager.enable = true;
-
 
   # List services that you want to enable:
 

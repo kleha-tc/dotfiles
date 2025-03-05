@@ -148,6 +148,11 @@ in
 			# DAP
 			{ plugin = nvim-dap; optional = true; }
 			{ plugin = nvim-dap-ui; optional = true; }
+			# Language
+			## Rust
+			{ plugin = rust-vim; optional = true; }
+			## LilyPond
+			{ plugin = nvim-lilypond-suite; optional = true;}
 			# Other
 			{ plugin = nvim-ts-autotag; optional = true; }
 		];
@@ -163,6 +168,8 @@ in
 			require("008_which-key")
 			require("009_ddc")
 			require("010_autotag")
+			require("012_rust")
+			require("013_lilypond")
 			require("101_main")
 			require("102_keymap")
 		'';
@@ -202,6 +209,8 @@ in
 		"nvim/lua/008_which-key.lua".source = ./lua/008_which-key.lua;
 		"nvim/lua/009_ddc.lua".source = ./lua/009_ddc.lua;
 		"nvim/lua/010_autotag.lua".source = ./lua/010_autotag.lua;
+		"nvim/lua/012_rust.lua".source = ./lua/012_rust.lua;
+		"nvim/lua/013_lilypond.lua".source = ./lua/013_lilypond.lua;
 		"nvim/lua/101_main.lua".source = ./lua/101_main.lua;
 		"nvim/lua/102_keymap.lua".source = ./lua/102_keymap.lua;
 		# "nvim/dpp.ts".source = ./dpp.ts;
