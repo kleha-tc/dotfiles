@@ -7,10 +7,15 @@
 
   imports = [
 		./nvim
+		./code
+		./sway
 		./emacs
+		./wezterm
+		./hyprland
 		./git.nix
 		./eza.nix
 		./zsh.nix
+		./kitty.nix
 		./starship.nix
   ];
   programs = {
