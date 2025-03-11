@@ -10,10 +10,12 @@
 			init-loader
 			ob-rust
 			org-nix-shell
+			magit
 		];
 		extraConfig = builtins.readFile ./init.el;
 	};
 	home.file = {
-		".emacs.d/org/init.org".source = ./org/init.org;
+
+		".emacs.d/org/init.org".source = ./org/init-for-nix.org;
 	};
 }
