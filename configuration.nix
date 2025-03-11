@@ -229,23 +229,6 @@
     fcitx5.waylandFrontend = true;
   };
 
-  fonts = {
-    packages = with pkgs; [
-      ipaexfont
-      noto-fonts-emoji
-      hackgen-nf-font
-    ];
-    fontDir.enable = true;
-    fontconfig = {
-      defaultFonts = {
-        serif = ["IPAexMincho" "Noto Color Emoji"];
-        sansSerif = ["IPAexGothic" "Noto Color Emoji"];
-        monospace = ["HackGen Console NF" "Noto Color Emoji"];
-        emoji = ["Noto Color Emoji"];
-      };
-    };
-  };
-
   # VM
   
   virtualisation = {
