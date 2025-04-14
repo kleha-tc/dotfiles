@@ -77,6 +77,7 @@ in
 			nvim-treesitter-parsers.c
 			nvim-treesitter-parsers.go
 			nvim-treesitter-parsers.lua
+			nvim-treesitter-parsers.elm
 			nvim-treesitter-parsers.nix
 			nvim-treesitter-parsers.zig
 			nvim-treesitter-parsers.vue
@@ -182,11 +183,13 @@ in
 			# Fern dependencies
 			trash-cli
 			# LSP
+			nil # nix
 			gopls # Go
 			tinymist # Typst
 			clang-tools # C/C++
 			lua-language-server # Lua
 			typescript-language-server #TypeScript
+			elmPackages.elm-language-server #Elm
 			python312Packages.python-lsp-server # python
 			# LSP Dependencies
 			python3

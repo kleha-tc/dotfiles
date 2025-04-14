@@ -1,0 +1,65 @@
+#+TITLE: Emacs Configuration for Windows
+
+* General Config
+
+** package.el
+
+#+begin_src elisp
+  (require 'package)
+  (setq package-archives
+  			'(("melpa" . "https://melpa.org/packages/")
+  				;;("melpa-stable" . "https://stable.melpa.org/packages/")
+          ("org" . "https://orgmode.org/elpa/")
+          ("gnu" . "https://elpa.gnu.org/packages/")))
+  (package-initialize)
+#+end_src
+
+** Editor
+
+*** Hide Menu-bar & Tool-bar
+
+#+begin_src elisp
+  (menu-bar-mode 0)
+  (tool-bar-mode 0)
+#+end_src
+
+*** Tab
+
+#+begin_src elisp
+  (setq-default tab-width 2)
+#+end_src
+
+*** Line Number
+
+#+begin_src elisp
+  (global-display-line-numbers-mode)
+#+end_src
+
+*** Color Theme
+
+#+begin_src elisp
+  (use-package catppuccin-theme
+  	:config
+  	(load-theme 'catppuccin :no-confirm)
+  	(setq catppuccin-flavour 'mocha)
+  	(catppuccin-reload))
+#+end_src
+
+** Keybind
+
+*** org-insert-structure-template
+
+#+begin_src elisp
+  (define-key org-mode-map (kbd "C-c C-s") 'org-insert-structure-template)
+#+end_src
+
+* Input System
+
+** ddskk
+
+#+begin_src elisp
+  (use-package ddskk-autoloads
+  	:config
+  	(global-set-key (kbd "C-x C-j") 'skk-mode))
+#+end_src
+

@@ -68,20 +68,7 @@
   (global-set-key [f8] 'neotree-toggle)
 #+end_src
 
-** LSP-Mode
-
-#+begin_src emacs-lisp
-  (setq lsp-keymap-prefix "s-l")
-  (require 'lsp-mode)
-#+end_src
-
-** LSP-UI
-
-#+begin_src elisp
-  (require 'lsp-ui)
-  (setq lsp-ui-imenu-enable t)
-  (setq lsp-headerline-breadcrumb-enable t)
-#+end_src
+** Eglot
 
 ** Company
 

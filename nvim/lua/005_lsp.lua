@@ -17,6 +17,16 @@ au({"BufReadPre", "BufNewFile"}, {
 	end
 })
 
+-- Nix
+
+au({"BufReadPre", "BufNewFile"}, {
+	once = true,
+	pattern = "*.nix",
+	callback = function()
+		lspconfig.nil_ls.setup{}
+	end
+})
+
 -- Lua
 
 au({"BufReadPre", "BufNewFile"}, {
@@ -74,5 +84,15 @@ au({"BufReadPre", "BufNewFile"}, {
 	pattern = { "*.hs", "*.cabal" },
 	callback = function()
 		lspconfig.hls.setup{}
+	end
+})
+
+-- Elm
+
+au({"BufReadPre", "BufNewFile"}, {
+	once = true,
+	pattern = { "*.elm" },
+	callback = function()
+		lspconfig.elmls.setup{}
 	end
 })
