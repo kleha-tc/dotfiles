@@ -77,6 +77,11 @@
   nix = {
     settings = {
       experimental-features = ["nix-command" "flakes"];
+			trusted-users = [
+				"root"
+				"Kleha"
+				"@wheel"
+			];
     };
   };
 
@@ -84,6 +89,10 @@
   virtualisation = {
 		docker.enable = true;
   };
+
+	# enable SSH
+
+	services.openssh.enable = true;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
