@@ -2,7 +2,7 @@
 {
 	programs.emacs = {
 	enable = true;
-		package = pkgs.emacs-nox;
+		package = pkgs.emacs;
 		extraPackages = epkgs: with epkgs; [
 			catppuccin-theme
 			neotree
