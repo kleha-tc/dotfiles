@@ -8,10 +8,10 @@
   imports = [
 		./nvim
 		./code
-		./sway
+		# ./sway
 		./emacs
 		./wezterm
-		./hyprland
+		# ./hyprland
 		./git.nix
 		./eza.nix
 		./zsh.nix
