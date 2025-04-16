@@ -3,6 +3,7 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 { config, pkgs, ... }:
+
 {
   imports =
     [ # Include the results of the hardware scan.
@@ -13,12 +14,8 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  boot.extraModulePackages = with config.boot.kernelPackages; [
-    rtl88xxau-aircrack
-  ];
-
   networking.hostName = "nixos"; # Define your hostname.
-  networking.wireless.iwd.enable = true;  # Enables wireless support via wpa_supplicant.
+  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -46,22 +43,11 @@
   };
 
   # Enable the X11 windowing system.
-  # You can disable this if you're only using the Wayland session.
-  # services.xserver.enable = true;
+  services.xserver.enable = true;
 
-  # Enable the KDE Plasma Desktop Environment.
-  # services.displayManager.sddm = {
-  #   enable = true;
-	#   wayland.enable = true;
-  # };
-  # services.desktopManager.plasma6.enable = true;
-
-	# Enable Budgie Desktop Environment
-
-	# services.xserver.desktopManager.budgie.enable = true;
-
-	# Enable polkit
-	security.polkit.enable = true;
+  # Enable the GNOME Desktop Environment.
+  services.xserver.displayManager.gdm.enable = true;
+  services.xserver.desktopManager.gnome.enable = true;
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -81,7 +67,7 @@
     alsa.support32Bit = true;
     pulse.enable = true;
     # If you want to use JACK applications, uncomment this
-    jack.enable = true;
+    #jack.enable = true;
 
     # use the example session manager (no others are packaged yet so this is enabled by default,
     # no need to redefine it in your config for now)
@@ -91,59 +77,14 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
-	# Enable Nvidia GPU support
-
-	hardware.graphics = {
-		enable = true;
-	};
-
-	services.xserver.videoDrivers = ["nvidia"];
-
-	hardware.nvidia = {
-		modesetting.enable = true;
-		powerManagement.enable = false;
-		powerManagement.finegrained = false;
-		open = false;
-		nvidiaSettings = true;
-		package = config.boot.kernelPackages.nvidiaPackages.stable;
-		prime = {
-			sync.enable = true;
-			intelBusId = "PCI:0:2:0";
-			nvidiaBusId = "PCI:1:0:0";
-		};
-	};
-
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.kleha = {
     isNormalUser = true;
-    description = "Kleha";
-    extraGroups = [ "networkmanager" "wheel" "docker" ];
+    description = "kleha";
+    extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
-      kdePackages.kate
-      thunderbird
-      teams-for-linux
-      discord
-      slack
-      onlyoffice-desktopeditors
-      libreoffice
-      freecad-wayland
-      blender
-      openscad
-      gimp
-      inkscape
-      zrythm
-      typst
-      satysfi
-      obsidian
-			tree-sitter
-			ngspice
-			bottles
-			kdePackages.kdeconnect-kde
-			kdePackages.okular
-			alacritty
-			realvnc-vnc-viewer
-		];
-    shell = pkgs.zsh;
+    #  thunderbird
+    ];
   };
 
   # Install firefox.
@@ -152,58 +93,15 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-	# Enable Nix-ld
-
-	programs.nix-ld.enable = true;
-
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-     # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    wget
-    libskk
-    skktools
-    fcitx5-configtool
-    obs-studio
-    win-virtio
-    deno
-		gcc
-		docker
-		trashy
-		vulkan-tools
-		usbutils
-		ghostty
+  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+  #  wget
   ];
 
-  programs = {
-    neovim = {
-      enable = true;
-      defaultEditor = true;
-      viAlias = true;
-      vimAlias = true;
-    };
-    zsh = {
-      enable = true;
-    };
-  };
+  nix.settings.experimental-features = [ "nix-command" "flakes"];
 
-	
-  fonts = {
-    packages = with pkgs; [
-      ipaexfont
-      noto-fonts-emoji
-      hackgen-nf-font
-    ];
-    fontDir.enable = true;
-    fontconfig = {
-      defaultFonts = {
-        serif = ["IPAexMincho" "Noto Color Emoji"];
-        sansSerif = ["IPAexGothic" "Noto Color Emoji"];
-        monospace = ["HackGen Console NF" "Noto Color Emoji"];
-        emoji = ["Noto Color Emoji"];
-      };
-    };
-  };
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
@@ -211,40 +109,6 @@
   #   enable = true;
   #   enableSSHSupport = true;
   # };
-
-  # Enable experimental features
-
-  nix = {
-    settings = {
-      experimental-features = ["nix-command" "flakes"];
-    };
-  };
-
-  # internationalization (i18n)
-
-  i18n.inputMethod = {
-    type = "fcitx5";
-    enable = true;
-    fcitx5.addons = with pkgs; [fcitx5-skk];
-    fcitx5.waylandFrontend = true;
-  };
-
-  # VM
-  
-  virtualisation = {
-		docker.enable = true;
-    libvirtd = {
-      enable = true;
-      qemu = {
-        swtpm.enable = true;
-        ovmf.enable = true;
-        ovmf.packages = [ pkgs.OVMFFull.fd ];
-      };
-    };
-    spiceUSBRedirection.enable = true;
-  };
-  users.groups.libvirtd.members = [ "kleha" ];
-  programs.virt-manager.enable = true;
 
   # List services that you want to enable:
 
