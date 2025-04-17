@@ -17,6 +17,7 @@
 		./zsh.nix
 		./kitty.nix
 		./starship.nix
+		./direnv.nix
   ];
 
   programs = {
@@ -34,6 +35,8 @@
 	home.packages = with pkgs; [
 		keepassxc
 		thunderbird
+		nixd
+		bottles
 	];
 }
 

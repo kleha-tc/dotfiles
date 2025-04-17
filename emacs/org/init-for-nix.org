@@ -9,6 +9,18 @@
   (setq default-tab-width 2)
 #+end_src
 
+** Line Number
+
+#+begin_src elisp
+  (global-display-line-numbers-mode)
+#+end_src
+
+** org-insert-structure-template
+
+#+begin_src elisp
+  (define-key org-mode-map (kbd "C-c s") 'org-insert-structure-template)
+#+end_src
+
 * UI
 
 ** Color Theme
@@ -16,9 +28,22 @@
 [[https://github.com/catppuccin/emacs][catppuccin/emacs]]
 #+begin_src emacs-lisp
   (load-theme 'catppuccin :no-confirm)
+  (setq catppuccin-flavor 'frappe)
+  (catppuccin-reload)
 #+end_src
 
-* Language
+[[https://github.com/dracula/emacs][dracula/emacs]]
+#+begin_src emacs-lisp
+  ; (load-theme 'dracula :no-confirm)
+#+end_src
+
+[[https://github.com/bbatsov/solarized-emacs][bbatsov/solarized-emacs]]
+
+#+begin_src elisp
+  ; (load-theme 'solarized-dark t)
+#+end_src
+
+* Natural Language
 
 ** ddskk
 
@@ -38,7 +63,7 @@
 [[https://github.com/magit/magit][magit/magit]]
 #+begin_src emacs-lisp
   (require 'magit)
-  (global-set-key (kbd C-x g) 'magit-status)
+  (global-set-key (kbd "C-x g") 'magit-status)
 #+end_src
 
 ** NeoTree
@@ -49,7 +74,78 @@
   (global-set-key [f8] 'neotree-toggle)
 #+end_src
 
+** Eglot
+
+#+begin_src elisp
+  (use-package eglot
+    :hook
+    (nix-mode . eglot-ensure)
+    (rust-mode . eglot-ensure)
+    :bind (("M-s d" . xref-find-definitions)
+  	 ("M-s r" . xref-find-reference)))
+#+end_src
+
+** Company
+
+#+begin_src elisp
+  (use-package company
+    :bind (("C-M-i" . 'company-complete)
+  	 :map company-active-map
+  	 ("M-n" . 'company-select-next)
+  	 ("M-p" . 'company-select-previous)
+  	 ("M-y" . 'company-complete-selection)
+  	 :map company-search-map
+  	 ("M-n" . 'company-select-next)
+  	 ("M-p" . 'company-select-previous)
+  	 ("M-y" . 'company-complete-selection))
+    :config
+    (global-company-mode)
+    (setq company-idle-delay 0)
+    (setq company-minimum-prefix-length 2)
+    (setq company-selection-wrap-around t)
+    (setq company-show-numbers t)
+    (setq company-frontends
+  	'(company-preview-frontend
+  	  company-pseudo-tooltip-frontend))
+    (setq company-format-margin-function 'company-vscode-dark-icons-margin))
+#+end_src
+
 * Programming
+
+** Web-Mode
+
+#+begin_src elisp
+  (use-package web-mode
+    :mode (("\\.html?\\'" . web-mode)
+  	 ("\\.jsp\\'" . web-mode)
+  	 ("\\.gsp\\'" . web-mode)
+  	 ("\\ts[x]?\\'" . web-mode)
+  	 ("\\js[x]?\\'" . web-mode))
+    :config
+    (setq web-mode-markup-indent-offset 2)
+    (setq web-mode-css-indent-offset 2)
+    (setq web-mode-code-indent-offset 2))
+#+end_src
+
+** Rust-mode
+
+#+begin_src elisp
+  (use-package rust-mode
+    :mode (("\\.rs\\'" . rust-mode))
+    :config
+    (add-to-list 'eglot-server-programs '(rust-mode . ("rust-analyzer"))))
+#+end_src
+
+** Nix-mode
+
+#+begin_src elisp
+  (use-package nix-mode
+    :mode "\\.nix\\'"
+    :hook
+    (nix-mode .  eglot-ensure)
+    :config
+    (add-to-list 'eglot-server-programs '(nix-mode . ("nixd"))))
+#+end_src
 
 * Org
 ** init
@@ -67,6 +163,7 @@ enable Org Tempo
 
 #+begin_src emacs-lisp
   (require 'org-tempo)
+  (define-key org-mode-map (kbd "C-c s") 'org-insert-structure-template)
 #+end_src
 
 ** Org-babel Enable
@@ -99,3 +196,5 @@ enable Org Tempo
     println!("Hello World");
   };
 #+end_src
+
+#+RESULTS:

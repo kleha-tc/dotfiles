@@ -11,11 +11,15 @@
 			ob-rust
 			org-nix-shell
 			magit
+			company
+			web-mode
+			ivy
+			rust-mode
+			nix-mode
 		];
 		extraConfig = builtins.readFile ./init.el;
 	};
 	home.file = {
-
 		".emacs.d/org/init.org".source = ./org/init-for-nix.org;
 	};
 }
