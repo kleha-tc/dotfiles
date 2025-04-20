@@ -43,6 +43,15 @@
   ; (load-theme 'solarized-dark t)
 #+end_src
 
+
+** Toolbar
+
+#+begin_src elisp
+  (menu-bar-mode -1)
+  (tool-bar-mode -1)
+  (set-scroll-bar-mode nil)
+#+end_src
+
 * Natural Language
 
 ** ddskk
