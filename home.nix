@@ -36,7 +36,10 @@
 		keepassxc
 		thunderbird
 		nixd
+		tinymist
 		bottles
+		inkscape
+		typst
 	];
 }
 
