@@ -1,8 +1,0 @@
-{ pkgs, ... }:
-{
-	programs.kitty = {
-		enable = true;
-		themeFile = "catppuccin-frappe";
-		shellIntegration.enableZshIntegration = true;
-	};
-}
