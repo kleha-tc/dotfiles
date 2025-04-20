@@ -44,6 +44,11 @@
 #+end_src
 
 
+** Font
+#+begin_src elisp
+  (set-frame-font "-PfEd-HackGen Console NF-regular-normal-normal-*-*-*-*-*-d-0-iso10646-1")
+#+end_src
+
 ** Toolbar
 
 #+begin_src elisp

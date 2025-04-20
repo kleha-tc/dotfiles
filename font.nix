@@ -10,7 +10,7 @@
 			defaultFonts = {
 				serif = [ "dejaVu serif" "ipaexmincho" ];
 				sansSerif = [ "dejaVu sans" "ipaexgothic" ];
-				monospace = [ "dejaVu mono" "hackgen" ];
+				monospace = [ "HackGen Console NF" "Noto Color Emoji" ];
 			};
 		};
 	};
