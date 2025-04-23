@@ -16,6 +16,8 @@
 			ivy
 			rust-mode
 			nix-mode
+      python-mode
+      typst-ts-mode
 		];
 		extraConfig = builtins.readFile ./init.el;
 	};

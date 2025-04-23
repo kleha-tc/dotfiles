@@ -40,6 +40,8 @@
 		bottles
 		inkscape
 		typst
+		slack
+		tree-sitter
+		tree-sitter-grammars.tree-sitter-typst
 	];
 }
-

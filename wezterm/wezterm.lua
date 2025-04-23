@@ -13,4 +13,6 @@ config.hide_tab_bar_if_only_one_tab = true
 config.disable_default_key_bindings = true
 config.keys = require("keybind").keys
 
+config.window_background_opacity = 0.75
+
 return config

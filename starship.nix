@@ -14,7 +14,8 @@ $directory[](fg:#99d1db bg:#eebebe)$direnv[](fg:#eebebe bg:#f4b8e4)$git_br
 			};
 			direnv = {
 				disabled = false;
-				style = "bold #81c8be bg:#eebebe";
+				format = "[ $symbol$allowed]($style)";
+				style = "bold #838ba7 bg:#eebebe";
 			};
 			git_branch = {
 				format = "[ $symbol$branch(:$remote_branch)]($style)";
