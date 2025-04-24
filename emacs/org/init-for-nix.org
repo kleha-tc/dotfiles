@@ -43,10 +43,10 @@
   ; (load-theme 'solarized-dark t)
 #+end_src
 
-
 ** Font
 #+begin_src elisp
-  (set-frame-font "-PfEd-HackGen Console NF-regular-normal-normal-*-*-*-*-*-d-0-iso10646-1")
+  (set-language-environment "Japanese")
+  (add-to-list 'default-frame-alist '(font . "HackGen Console NF" ))
 #+end_src
 
 ** Toolbar
@@ -92,11 +92,10 @@
 
 #+begin_src elisp
   (use-package eglot
-    :hook
-    (nix-mode . eglot-ensure)
-    (rust-mode . eglot-ensure)
     :bind (("M-s d" . xref-find-definitions)
-  	 ("M-s r" . xref-find-reference)))
+  	 ("M-s r" . xref-find-reference))
+    :config
+    (require 'eglot))
 #+end_src
 
 ** Company
@@ -232,3 +231,8 @@ enable Org Tempo
 #+end_src
 
 #+RESULTS:
+
+** Org-Preview-Latex
+#+begin_src elisp
+  (setq org-latex-create-formula-image-program 'dvipng)
+#+end_src

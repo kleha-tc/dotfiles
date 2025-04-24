@@ -43,5 +43,6 @@
 		slack
 		tree-sitter
 		tree-sitter-grammars.tree-sitter-typst
+    texliveBasic
 	];
 }
