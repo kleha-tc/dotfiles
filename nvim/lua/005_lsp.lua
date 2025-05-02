@@ -76,3 +76,13 @@ au({"BufReadPre", "BufNewFile"}, {
 		lspconfig.hls.setup{}
 	end
 })
+
+-- Nix
+
+au({"BufReadPre", "BufNewFile"}, {
+	once = true,
+	pattern = { "*.nix" },
+	callback = function()
+		vim.lsp.enable("nixd")
+	end
+})

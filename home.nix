@@ -37,6 +37,7 @@
 		thunderbird
 		nixd
 		tinymist
+		openscad
 		bottles
 		inkscape
 		typst
@@ -44,5 +45,9 @@
 		tree-sitter
 		tree-sitter-grammars.tree-sitter-typst
     texliveBasic
+		discord
+		processing
+		kdePackages.breeze
+		kdePackages.breeze-icons
 	];
 }

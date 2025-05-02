@@ -91,11 +91,12 @@
 ** Eglot
 
 #+begin_src elisp
+  (require 'eglot)
   (use-package eglot
-    :bind (("M-s d" . xref-find-definitions)
-  	 ("M-s r" . xref-find-reference))
-    :config
-    (require 'eglot))
+      :bind (("M-s d" . xref-find-definitions)
+    	 ("M-s r" . xref-find-reference))
+      :config
+    )
 #+end_src
 
 ** Company
@@ -134,6 +135,8 @@
   	 ("\\.gsp\\'" . web-mode)
   	 ("\\ts[x]?\\'" . web-mode)
   	 ("\\js[x]?\\'" . web-mode))
+    :hook
+    (web-mode . eglot-ensure)
     :config
     (setq web-mode-markup-indent-offset 2)
     (setq web-mode-css-indent-offset 2)
@@ -145,6 +148,8 @@
 #+begin_src elisp
   (use-package rust-mode
     :mode (("\\.rs\\'" . rust-mode))
+    :hook
+    (rust-mode . eglot-ensure)
     :config
     (add-to-list 'eglot-server-programs '(rust-mode . ("rust-analyzer"))))
 #+end_src
