@@ -5,6 +5,7 @@
 			hackgen-nf-font
 			ipaexfont
 			notonoto
+			vegur
 		];
 		fontconfig = {
 			defaultFonts = {
