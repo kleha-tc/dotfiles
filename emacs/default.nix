@@ -18,6 +18,12 @@
 			nix-mode
       python-mode
       typst-ts-mode
+      elm-mode
+      (treesit-grammars.with-grammars (
+        p: with p; [
+          tree-sitter-typst
+        ]
+      ))
 		];
 		extraConfig = builtins.readFile ./init.el;
 	};

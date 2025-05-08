@@ -49,5 +49,7 @@
 		processing
 		kdePackages.breeze
 		kdePackages.breeze-icons
+		epson-escpr
+    elmPackages.elm-language-server
 	];
 }

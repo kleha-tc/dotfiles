@@ -2,7 +2,6 @@
 #+STARTUP: overview
 
 * Base
-
 ** Tab Width
 
 #+begin_src emacs-lisp
@@ -22,7 +21,6 @@
 #+end_src
 
 * UI
-
 ** Color Theme
 
 [[https://github.com/catppuccin/emacs][catppuccin/emacs]]
@@ -58,7 +56,6 @@
 #+end_src
 
 * Natural Language
-
 ** ddskk
 
 [[https://github.com/skk-dev/ddskk][skk-dev/ddskk]]
@@ -71,7 +68,6 @@
 #+end_src
 
 * Utility
-
 ** Magit
 
 [[https://github.com/magit/magit][magit/magit]]
@@ -125,7 +121,6 @@
 #+end_src
 
 * Programming
-
 ** Web-Mode
 
 #+begin_src elisp
@@ -183,6 +178,16 @@
     (typst-ts-mode . eglot-ensure)
     :config
     (add-to-list 'eglot-server-programs '(typst-ts-mode . ("tinymist"))))
+#+end_src
+
+** Elm-mode
+#+begin_src elisp
+  (use-package elm-mode
+    :mode "\\.elm\\'"
+    :hook
+    (elm-mode . eglot-ensure)
+    :config
+    (add-to-list 'eglot-server-programs '(elm-mode . ("elm-language-server"))))
 #+end_src
 
 * Org
