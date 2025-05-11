@@ -11,6 +11,7 @@
 			./direnv.nix
 			./font.nix
 			./shell.nix
+			./docker.nix
     ];
 
   # Bootloader.
@@ -84,7 +85,7 @@
   users.users.kleha = {
     isNormalUser = true;
     description = "kleha";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" ];
     packages = with pkgs; [
       kdePackages.kate
     #  thunderbird
