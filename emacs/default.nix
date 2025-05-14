@@ -19,6 +19,7 @@
       python-mode
       typst-ts-mode
       elm-mode
+      direnv
       (treesit-grammars.with-grammars (
         p: with p; [
           tree-sitter-typst

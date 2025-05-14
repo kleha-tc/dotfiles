@@ -1,0 +1,20 @@
+#    -*- mode: org -*-
+
+
+Archived entries from file /home/kleha/dotfiles/emacs/org/init-for-nix.org
+
+
+* emacs-direnv
+:PROPERTIES:
+:ARCHIVE_TIME: 2025-05-14 水 10:52
+:ARCHIVE_FILE: ~/dotfiles/emacs/org/init-for-nix.org
+:ARCHIVE_OLPATH: Utility
+:ARCHIVE_CATEGORY: init-for-nix
+:END:
+
+#+begin_src elisp
+  (use-package direnv
+    :config
+    (direnv-mode))
+#+end_src
+

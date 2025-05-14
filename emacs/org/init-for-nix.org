@@ -135,7 +135,9 @@
     :config
     (setq web-mode-markup-indent-offset 2)
     (setq web-mode-css-indent-offset 2)
-    (setq web-mode-code-indent-offset 2))
+    (setq web-mode-code-indent-offset 2)
+    (setq web-mode-enable-current-element-highlight t)
+    (add-to-list 'eglot-server-programs '(web-mode . ("typescript-language-server" "--stdio"))))
 #+end_src
 
 ** Rust-mode
