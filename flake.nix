@@ -7,7 +7,7 @@
 
   outputs = inputs@{ nixpkgs, home-manager, ... }: {
     nixosConfigurations = {
-      kleha-nix = inputs.nixpkgs.lib.nixosSystem {
+      nixos-laptop = inputs.nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
           ./configuration.nix

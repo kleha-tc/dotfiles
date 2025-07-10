@@ -12,21 +12,34 @@
 			./font.nix
 			./shell.nix
 			./docker.nix
+      ./firefox.nix
+      ./hyprland/enabler.nix
+      ./sway/enabler.nix
+			./network.nix
+			./printing.nix
+			./ime.nix
+			./river/enabler.nix
     ];
+
+	nixpkgs.config.permittedInsecurePackages = with pkgs; [
+		"olm-3.2.16"
+		"fluffychat-linux-1.27.0"
+	];
+	
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-
+  boot.kernelPackages = pkgs.linuxPackages_xanmod;
+  
   networking.hostName = "nixos"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Enable networking
-  networking.networkmanager.enable = true;
+  # networking.networkmanager.enable = true;
 
   # Set your time zone.
   time.timeZone = "Asia/Tokyo";
@@ -59,6 +72,23 @@
     variant = "";
   };
 
+  services.xserver.videoDrivers = [
+    "modesetting"
+    "nvidia"
+  ];
+  hardware.graphics.enable  = true;
+  hardware.nvidia = {
+    open = true;
+    prime = {
+      offload = {
+        enable = true;
+        enableOffloadCmd = true;
+      };
+      intelBusId = "PCI:0:2:0";
+      nvidiaBusId = "PCI:1:0:0";
+    };
+  };
+
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
@@ -85,10 +115,10 @@
   users.users.kleha = {
     isNormalUser = true;
     description = "kleha";
-    extraGroups = [ "networkmanager" "wheel" "docker" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" "libvirtd" "wireshark" ];
     packages = with pkgs; [
       kdePackages.kate
-    #  thunderbird
+      #  thunderbird
     ];
   };
 
@@ -104,7 +134,20 @@
 		cups
 		cups-printers
 		cups-filters
-  ];
+		openhantek6022
+		qemu
+		quickemu
+		qemu_kvm
+		kvmtool
+		candy-icons
+		wireshark
+	];
+
+	programs.wireshark = {
+			enable = true;
+			dumpcap.enable = true;
+			usbmon.enable = true;
+		};
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -131,7 +174,7 @@
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
-  # on your system were taken. It‘s perfectly fine and recommended to leave
+  # on your stystem were taken. It‘s perfectly fine and recommended to leave
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).

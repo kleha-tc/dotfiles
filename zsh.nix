@@ -9,7 +9,7 @@
 			lla = "eza -la --git --icons=auto";
 			lt = "eza --tree --git --icons=auto";
 			ec = "emacsclient -a ''";
-			rebuild = "sudo nixos-rebuild switch --flake .#kleha-nix";
+			rebuild = "sudo nixos-rebuild switch --flake .#nixos-laptop";
 		};
 	};
 }

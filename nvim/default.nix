@@ -174,7 +174,7 @@ in
 			require("102_keymap")
 		'';
 		extraPackages = with pkgs; [
-			deno
+			# deno
 			# Telescope dependencies
 			ripgrep
 			fd

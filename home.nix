@@ -6,18 +6,24 @@
   programs.home-manager.enable = true;
 
   imports = [
-		./nvim
+		./eww
 		./code
-		# ./sway
+    ./nvim
+		./sway
 		./emacs
+		./river
 		./wezterm
-		# ./hyprland
+		./hyprland
 		./git.nix
 		./eza.nix
 		./zsh.nix
 		./kitty.nix
 		./starship.nix
 		./direnv.nix
+		./matrix.nix
+		./wofi.nix
+    ./waybar.nix
+    ./wlogout.nix
   ];
 
   programs = {
@@ -33,6 +39,11 @@
 	};
 
 	home.packages = with pkgs; [
+		freecad
+		element-call
+		element-desktop
+    cinny-desktop
+		google-fonts
 		keepassxc
 		thunderbird
 		nixd
@@ -44,12 +55,18 @@
 		slack
 		tree-sitter
 		tree-sitter-grammars.tree-sitter-typst
-    texliveBasic
+    texliveMedium
 		discord
 		processing
-		kdePackages.breeze
-		kdePackages.breeze-icons
+		candy-icons
+		pcmanfm
 		epson-escpr
     elmPackages.elm-language-server
+    typescript
+    teams-for-linux
+		brightnessctl
+    kicad
+		godot
+		aircrack-ng
 	];
 }

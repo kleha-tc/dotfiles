@@ -20,15 +20,25 @@
       typst-ts-mode
       elm-mode
       direnv
+      vue-mode
+      ement
+			yuck-mode
+      copilot
+      copilot-chat
       (treesit-grammars.with-grammars (
         p: with p; [
           tree-sitter-typst
+          tree-sitter-html
         ]
       ))
 		];
+    overrides = self: super: {
+      direnv =  self.melpaPackages.direnv;
+    };
 		extraConfig = builtins.readFile ./init.el;
 	};
 	home.file = {
 		".emacs.d/org/init.org".source = ./org/init-for-nix.org;
-	};
+  };
 }
+

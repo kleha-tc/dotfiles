@@ -38,5 +38,15 @@ return {
 			mods = "ALT|SHIFT",
 			action = act.MoveTabRelative(1)
 		},
+		{
+			key = "v",
+			mods = "CTRL|SHIFT",
+			action = act.PasteFrom "Clipboard"
+		},
+		{
+			key = "c",
+			mods = "CTRL|SHIFT",
+			action = act.CopyTo "ClipboardAndPrimarySelection"
+		},
 	}
 }
