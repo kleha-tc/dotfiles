@@ -30,7 +30,7 @@ in
 		./emacs
 		./git.nix
 		./eza.nix
-		./zsh.nix
+		./zsh/for_wsl.nix
 		./direnv.nix
 		./starship.nix
 	];
