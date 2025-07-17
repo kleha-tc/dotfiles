@@ -16,7 +16,8 @@
 		./hyprland
 		./git.nix
 		./eza.nix
-		./zsh.nix
+		./zsh
+		./zsh/for_laptop.nix
 		./kitty.nix
 		./starship.nix
 		./direnv.nix
