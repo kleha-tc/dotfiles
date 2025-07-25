@@ -5,6 +5,7 @@
 			./emacs
 			./git.nix
 			./eza.nix
+			./zsh
 			./zsh/for_wsl.nix
 			./direnv.nix
 			./starship.nix
