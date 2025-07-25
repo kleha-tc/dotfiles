@@ -1,6 +1,5 @@
 { pkgs, ...}:
 {
-  home-manager.users.kleha = {
   	imports = [
 			./nvim
 			./emacs
@@ -14,5 +13,4 @@
 		home.packages = with pkgs; [
 			github-cli
 		];
-  };
 }
