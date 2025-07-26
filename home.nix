@@ -21,7 +21,7 @@
 		./kitty.nix
 		./starship.nix
 		./direnv.nix
-		./matrix.nix
+		./pantalaimon.nix
 		./wofi.nix
     ./waybar.nix
     ./wlogout.nix
@@ -41,8 +41,10 @@
 
 	home.packages = with pkgs; [
 		freecad
+		element
 		element-call
 		element-desktop
+		fluffychat
     cinny-desktop
 		google-fonts
 		keepassxc

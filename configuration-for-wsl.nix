@@ -12,6 +12,7 @@
   imports = [
     ./direnv.nix
     ./shell.nix
+		./font.nix
   ];
 
   wsl.enable = true;
@@ -28,4 +29,10 @@
   environment.variables = {
     COLORTERM="truecolor";
   };
+  nixpkgs.config.permittedInsecurePackages = [
+    "olm-3.2.16"
+  ];
+	environment.systemPackages = with pkgs; [
+		pantalaimon
+	];
 }

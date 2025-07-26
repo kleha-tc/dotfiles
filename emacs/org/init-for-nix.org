@@ -133,7 +133,7 @@
 #+begin_src elisp
   (use-package ement
     :config
-    (ement-connect :url-prefix "http://localhost:8009"))
+    (ement-connect :uri-prefix "http://localhost:8009"))
 #+end_src
 
 ** copilot.el
@@ -141,6 +141,8 @@
   (use-package copilot
     :hook
     (prog-mode . copilot-mode)
+    :init
+    (setq copilot-indent-offset-warning-disable t)
     :config
     (define-key copilot-completion-map (kbd "<tab>") 'copilot-accept-completion)
     (define-key copilot-completion-map (kbd "TAB") 'copilot-accept-completion))

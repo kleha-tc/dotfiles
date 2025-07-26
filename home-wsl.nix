@@ -9,9 +9,15 @@
 			./zsh/for_wsl.nix
 			./direnv.nix
 			./starship.nix
+			./sway
+			./pantalaimon.nix
 		];
 		home.stateVersion = "23.11";
 		home.packages = with pkgs; [
 			github-cli
+      pantalaimon
+      nixd
+			gnome-keyring
+			firefox
 		];
 }
