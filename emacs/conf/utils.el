@@ -1,21 +1,28 @@
 ;; -*- lexical-binding: t; -*-
 ;; ddskk
-(require 'ddskk)
-(setq skk-large-jisyo "~/skk/SKK-JISYO.L")
-(defun my/enable-skk ()
-  (skk-latin-mode 1))
-(add-hook 'find-file-hook 'my/enable-skk)
-(setq skk-rom-kana-rule-list
+(use-package ddskk
+  :ensure t
+  :config
+  (setq skk-large-jisyo "~/skk/SKK-JISYO.L")
+  (defun my/enable-skk ()
+    (skk-latin-mode 1))
+  (add-hook 'find-file-hook 'my/enable-skk)
+  (setq skk-rom-kana-rule-list
       (append '(("." nil "．") ("," nil "，"))
-              skk-rom-kana-rule-list))
+              skk-rom-kana-rule-list)))
+
 
 ;; magit
 (require 'magit)
 (global-set-key (kbd "C-x g") 'magit-status)
+(use-package magit
+  :ensure t
+  :bind (("C-x g" . magit-status)))
 
 ;; neotree
-(require 'neotree)
-(global-set-key [f8] 'neotree-toggle)
+(use-package neotree
+  :ensure t
+  :bind (("f8" . neotree-toggle)))
 
 ;; direnv
 (use-package direnv
@@ -25,6 +32,7 @@
 
 ;; copilot.el
 (use-package copilot
+  :ensure t
   :hook
   (prog-mode . copilot-mode)
   :init
@@ -35,7 +43,14 @@
 
 ;; copilot-chat
 (use-package copilot-chat
+:ensure t
 :bind (:map global-map
           ("C-c C-y" . copilot-chat-yank) 
           ("C-c M-y" . copilot-chat-yank-pop)
           ("C-c C-M-y" . (lambda () (interactive) (copilot-chat-yank-pop -1)))))
+
+;; which-key
+(use-package which-key
+  :ensure t
+    :config
+    (which-key-mode))

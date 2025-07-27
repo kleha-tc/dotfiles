@@ -1,8 +1,19 @@
 ;; -*- lexical-binding: t; -*-
+;; powerline
+(use-package powerline
+    :ensure t
+    :config
+    (powerline-default-theme))
+
 ;; Catppuccin
-(load-theme 'catppuccin :no-confirm)
-(setq catppuccin-flavor 'frappe)
-(catppuccin-reload)
+(use-package catppuccin
+    :ensure t
+    :config
+    (load-theme 'catppuccin :no-confirm)
+    (setq catppuccin-flavor 'frappe)
+    (catppuccin-reload)
+)
+
 
 ; (load-theme 'dracula :no-confirm)
 

@@ -3,8 +3,9 @@
 (add-to-list 'load-path "~/.emacs.d/conf")
 
 (load "base")
-(load "ui")
-(load "lsp")
+(load "ivy-conf")
 (load "lang")
+(load "lsp")
+(load "ui")
 (load "utils")
 ;; (load "org")

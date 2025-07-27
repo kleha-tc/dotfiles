@@ -1,6 +1,7 @@
 ;; -*- lexical-binding: t; -*-
 
 (use-package lsp-mode
+  :ensure t
   :init
   (setq lsp-keymap-prefix "C-c l")
   :hook ((nix-mode . lsp)
@@ -19,9 +20,13 @@
   :commands lsp)
 
 (use-package lsp-ui
+  :ensure t
   :commands lsp-ui-mode)
 
+(use-package lsp-ivy :ensure t :commands lsp-ivy-workspace-symbol)
+
 (use-package company
+  :ensure t
   :bind (("C-M-i" . 'company-complete)
 	 :map company-active-map
 	 ("M-n" . 'company-select-next)
