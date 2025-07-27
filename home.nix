@@ -40,6 +40,7 @@
 	};
 
 	home.packages = with pkgs; [
+		gparted
 		freecad
 		element-call
 		element-desktop
@@ -69,5 +70,7 @@
     kicad
 		godot
 		aircrack-ng
+		vivaldi
+		hypridle
 	];
 }

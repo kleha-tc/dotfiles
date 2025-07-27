@@ -65,7 +65,9 @@
   (defun my/enable-skk ()
     (skk-latin-mode 1))
   (add-hook 'find-file-hooks 'my/enable-skk)
-  (setq skk-kutouten-type 'en)
+  (setq skk-rom-kana-rule-list
+    (append '(("." nil ".") ("," nil ","))
+    skk-rom-kana-rule-list))
 #+end_src
 
 * Utility
