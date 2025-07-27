@@ -1,4 +1,4 @@
-{ config, pkgs, ...}:
+{ pkgs, ...}:
 {
 	nixpkgs.config.allowUnfree = true;
 	programs.emacs = {
@@ -26,6 +26,10 @@
 			yuck-mode
       copilot
       copilot-chat
+      lsp-mode
+			lsp-ui
+			lsp-ivy
+			flycheck
       (treesit-grammars.with-grammars (
         p: with p; [
           tree-sitter-typst
@@ -39,7 +43,7 @@
 		extraConfig = builtins.readFile ./init.el;
 	};
 	home.file = {
-		".emacs.d/org/init.org".source = ./org/init-for-nix.org;
+		".emacs.d/conf".source = ./conf;
   };
 }
 

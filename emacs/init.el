@@ -1,4 +1,10 @@
-;; Load org/init.org
-(require 'org)
-(defvar org-config (concat user-emacs-directory "org/"))
-(org-babel-load-file (expand-file-name "init.org" org-config))
+;; -*- lexical-binding: t; -*-
+
+(add-to-list 'load-path "~/.emacs.d/conf")
+
+(load "base")
+(load "ui")
+(load "lsp")
+(load "lang")
+(load "utils")
+;; (load "org")

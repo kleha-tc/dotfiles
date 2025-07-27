@@ -131,9 +131,9 @@
 
 ** ement.el
 #+begin_src elisp
-  (use-package ement
-    :config
-    (ement-connect :uri-prefix "http://localhost:8009"))
+  ;(use-package ement
+  ;  :config
+  ;  (ement-connect :uri-prefix "http://localhost:8009"))
 #+end_src
 
 ** copilot.el

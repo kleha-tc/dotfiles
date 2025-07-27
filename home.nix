@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 {
   home.username = "kleha";
   home.homeDirectory = "/home/kleha";
@@ -44,7 +44,8 @@
 		element
 		element-call
 		element-desktop
-		fluffychat
+    blender
+	  fluffychat
     cinny-desktop
 		google-fonts
 		keepassxc
