@@ -1,4 +1,4 @@
-(use-package 'ivy
+(use-package ivy
     :ensure t
     :init
     (ivy-mode 1))
@@ -15,5 +15,3 @@
 (use-package swiper
     :ensure t
     :bind (("M-s M-s" . swiper-thing-at-point)))
-
-(provide ivy)

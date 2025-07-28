@@ -6,7 +6,7 @@
     (powerline-default-theme))
 
 ;; Catppuccin
-(use-package catppuccin
+(use-package catppuccin-theme
     :ensure t
     :config
     (load-theme 'catppuccin :no-confirm)

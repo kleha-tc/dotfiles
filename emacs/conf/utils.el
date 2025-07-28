@@ -13,8 +13,6 @@
 
 
 ;; magit
-(require 'magit)
-(global-set-key (kbd "C-x g") 'magit-status)
 (use-package magit
   :ensure t
   :bind (("C-x g" . magit-status)))
@@ -22,7 +20,7 @@
 ;; neotree
 (use-package neotree
   :ensure t
-  :bind (("f8" . neotree-toggle)))
+  :bind (([f8] . neotree-toggle)))
 
 ;; direnv
 (use-package direnv
