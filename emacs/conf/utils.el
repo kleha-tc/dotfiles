@@ -8,7 +8,7 @@
     (skk-latin-mode 1))
   (add-hook 'find-file-hook 'my/enable-skk)
   (setq skk-rom-kana-rule-list
-      (append '(("." nil "．") ("," nil "，"))
+      (append '(("." nil ". ") ("," nil ", "))
               skk-rom-kana-rule-list)))
 
 
@@ -52,3 +52,9 @@
   :ensure t
     :config
     (which-key-mode))
+
+;; yasnippet
+(use-package yasnippet
+	:ensure t
+	:config
+	(yas-global-mode 1))
