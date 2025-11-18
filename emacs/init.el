@@ -8,7 +8,7 @@
 (load "lang")
 (load "lsp")
 (load "utils")
-;; (load "org")
+(load "org-conf")
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
