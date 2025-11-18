@@ -21,7 +21,7 @@
 
 ;; Font
 (set-language-environment "Japanese")
-(add-to-list 'default-frame-alist '(font . "HackGen Console NF" ))
+(add-to-list 'default-frame-alist '(font . "Migu 2M-11" ))
 
 ;; Trun to Unvisible several menus
 (menu-bar-mode -1)

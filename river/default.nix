@@ -1,7 +1,7 @@
 { pkgs, ...}:
 {
   wayland.windowManager.river = {
-    enable =true;
+    enable = true;
 		extraConfig = builtins.readFile ./init;
   };
 }

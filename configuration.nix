@@ -5,34 +5,42 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-			./direnv.nix
-			./font.nix
-			./shell.nix
-			./docker.nix
-      ./firefox.nix
-      ./hyprland/enabler.nix
-      ./sway/enabler.nix
-			./network.nix
-			./printing.nix
-			./ime.nix
-			./river/enabler.nix
-    ];
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    ./direnv.nix
+    ./font.nix
+    ./shell.nix
+    ./docker.nix
+    ./firefox.nix
+    ./hyprland/enabler.nix
+    ./sway/enabler.nix
+    ./network.nix
+    ./printing.nix
+    ./ime.nix
+    ./river/enabler.nix
+  ];
 
-	nixpkgs.config.permittedInsecurePackages = with pkgs; [
-		"olm-3.2.16"
-		"fluffychat-linux-1.27.0"
-	];
-	
+  nixpkgs.config.permittedInsecurePackages = with pkgs; [
+    "olm-3.2.16"
+    "fluffychat-linux-1.27.0"
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelPackages = pkgs.linuxPackages_xanmod;
-  
+
   networking.hostName = "nixos"; # Define your hostname.
+  networking.interfaces.enp0s20f0u2 = {
+    ipv4.addresses = [
+      {
+        address = "192.168.10.20";
+        prefixLength = 24;
+      }
+    ];
+    useDHCP = true;
+  };
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -76,9 +84,8 @@
     "modesetting"
     "nvidia"
   ];
-  hardware.graphics.enable  = true;
+  hardware.graphics.enable = true;
   hardware.nvidia = {
-    open = true;
     prime = {
       offload = {
         enable = true;
@@ -87,6 +94,7 @@
       intelBusId = "PCI:0:2:0";
       nvidiaBusId = "PCI:1:0:0";
     };
+    open = true;
   };
 
   # Enable CUPS to print documents.
@@ -115,7 +123,13 @@
   users.users.kleha = {
     isNormalUser = true;
     description = "kleha";
-    extraGroups = [ "networkmanager" "wheel" "docker" "libvirtd" "wireshark" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "docker"
+      "libvirtd"
+      "wireshark"
+    ];
     packages = with pkgs; [
       kdePackages.kate
       #  thunderbird
@@ -128,26 +142,28 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #  wget
-		epson-escpr
-		cups
-		cups-printers
-		cups-filters
-		openhantek6022
-		qemu
-		quickemu
-		qemu_kvm
-		kvmtool
-		candy-icons
-		wireshark
-	];
+    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    #  wget
+    epson-escpr
+    cups
+    cups-printers
+    cups-filters
+    openhantek6022
+    qemu
+    quickemu
+    qemu_kvm
+    kvmtool
+    candy-icons
+    wireshark
+    linuxKernel.packages.linux_xanmod.evdi
+    displaylink
+  ];
 
-	programs.wireshark = {
-			enable = true;
-			dumpcap.enable = true;
-			usbmon.enable = true;
-		};
+  programs.wireshark = {
+    enable = true;
+    dumpcap.enable = true;
+    usbmon.enable = true;
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -162,10 +178,16 @@
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
 
-	# Enable Flake
+  # Enable Flake
 
-	nix.settings.experimental-features = ["nix-command" "flakes"];
-
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
+  nix.settings.trusted-users = [
+    "root"
+    "kleha"
+  ];
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];

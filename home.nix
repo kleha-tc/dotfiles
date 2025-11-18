@@ -11,7 +11,7 @@
     ./nvim
 		./sway
 		./emacs
-		./river
+#		./river
 		./wezterm
 		./hyprland
 		./git.nix
@@ -21,7 +21,7 @@
 		./kitty.nix
 		./starship.nix
 		./direnv.nix
-		./pantalaimon.nix
+#		./pantalaimon.nix
 		./wofi.nix
     ./waybar.nix
     ./wlogout.nix
@@ -40,21 +40,17 @@
 	};
 
 	home.packages = with pkgs; [
-		gparted
 		freecad
 		element
 		element-call
 		element-desktop
     blender
-	  fluffychat
-    cinny-desktop
 		google-fonts
 		keepassxc
 		thunderbird
 		nixd
 		tinymist
 		openscad
-		bottles
 		inkscape
 		typst
 		slack
@@ -73,7 +69,7 @@
     kicad
 		godot
 		aircrack-ng
-		vivaldi
 		hypridle
+		winboat
 	];
 }

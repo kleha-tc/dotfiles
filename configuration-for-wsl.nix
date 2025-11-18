@@ -5,19 +5,27 @@
 # NixOS-WSL specific options are documented on the NixOS-WSL repository:
 # https://github.com/nix-community/NixOS-WSL
 
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 {
   nixpkgs.config.allowUnfree = true;
 
   imports = [
     ./direnv.nix
     ./shell.nix
-		./font.nix
+    ./font.nix
   ];
 
   wsl.enable = true;
   wsl.defaultUser = "kleha";
-  nix.settings.experimental-features = ["nix-command" "flakes"];  
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
@@ -27,12 +35,12 @@
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "23.11"; # Did you read the comment?
   environment.variables = {
-    COLORTERM="truecolor";
+    COLORTERM = "truecolor";
   };
   nixpkgs.config.permittedInsecurePackages = [
     "olm-3.2.16"
   ];
-	environment.systemPackages = with pkgs; [
-		pantalaimon
-	];
+  environment.systemPackages = with pkgs; [
+    pantalaimon
+  ];
 }
