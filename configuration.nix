@@ -19,11 +19,7 @@
     ./printing.nix
     ./ime.nix
     ./river/enabler.nix
-  ];
-
-  nixpkgs.config.permittedInsecurePackages = with pkgs; [
-    "olm-3.2.16"
-    "fluffychat-linux-1.27.0"
+    ./syncthing.nix
   ];
 
   # Bootloader.
@@ -189,7 +185,12 @@
     "kleha"
   ];
   # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
+  networking.firewall.allowedTCPPorts = [
+    3000
+    8000
+    8080
+    8384
+  ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
