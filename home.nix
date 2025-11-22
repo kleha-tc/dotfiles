@@ -11,7 +11,7 @@
     ./nvim
 		./sway
 		./emacs
-#		./river
+		./river
 		./wezterm
 		./hyprland
 		./git.nix
@@ -70,6 +70,7 @@
 		godot
 		aircrack-ng
 		hypridle
-		winboat
+		guix
+#		winboat
 	];
 }

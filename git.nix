@@ -1,13 +1,15 @@
-{ pkgs, ... }:
+{ ... }:
 {
   programs.git = {
     enable = true;
-    userName = "kleha";
-    userEmail = "rm23081b@st.omu.ac.jp";
-    extraConfig = {
+    settings = {
       init = {
         defaultBranch = "main";
       };
+			user = {
+				email = "kleha@klefpj.org";
+				name = "kleha";
+			};
     };
   };
 }
