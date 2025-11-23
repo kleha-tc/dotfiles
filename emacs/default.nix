@@ -1,6 +1,5 @@
 { pkgs, ... }:
 {
-  nixpkgs.config.allowUnfree = true;
   programs.emacs = {
     enable = true;
     package = pkgs.emacs;
