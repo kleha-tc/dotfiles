@@ -7,8 +7,8 @@
         # App Shortcuts
         "Super Return" = "spawn wezterm";
         "Super F" = "spawn firefox";
-        "Super+Shift Q" = "spawn poweroff";
         "Super R" = "spawn 'wofi --show drun'";
+				"Suprt Q" = "spawn wlogout";
         # Control
         "Super+Shift E" = "exit";
         "Super C" = "close";
