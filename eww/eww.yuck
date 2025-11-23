@@ -1,19 +1,97 @@
+(defpoll get_wsp
+	 :interval "1s"
+	 :initial "●"
+	 "./modules/workspaces.py")
+
+(defwidget workspaces []
+	   (box :halign "start"
+		:orientation "h"
+		:class "workspace"
+		{get_wsp}))
+
+(defpoll time :interval "5s"
+	 :initial ""
+	 `date +%H:%M`)
+
+(defwidget timepanel []
+	   (box :halign "center"
+		:width 60
+		(label :text time)))
+
+(defpoll battery
+	 :interval "20s"
+	 :initial "{\"icon\": \"󰂎\", \"percent\": \"?\", \"class\": \"normal\", \"tooltip\": \"Battery\"}"
+	 "./modules/battery.sh")
+
+(defpoll network
+	 :interval "10s"
+	 :initial "{\"icon\": \"󰌙\", \"text\": \"Disconnected\", \"class\": \"disconnected\"}"
+	 "./modules/network.sh")
+
+(defwidget batpanel []
+	   (box :class "bat-box ${battery.class ?: 'normal'}"
+		:halign "start"
+		:orientation "h"
+		:tooltip "${battery.tooltip ?: 'Battery'}"
+		(label :class "icon" :text "${battery.icon ?: '󰂎'}")
+		(label :class "percent" :text "${battery.percent ?: '?'}%")))
+
+(defwidget networkpanel []
+	   (box :class "network-box ${network.class ?: 'disconnected'}"
+		:halign "start"
+		:orientation "h"
+		:tooltip "Network: ${network.text ?: 'Unknown'}"
+		(label :class "network-icon" :text "${network.icon ?: '󰌙'}")
+		(label :class "network-text" :text "${network.text ?: 'Disconnected'}")))
+
+(defwidget riverpanel []
+	   (box :class "bar"
+		:orientation "h"
+		(centerbox :orientation "h"
+		      (box)
+		      (timepanel)
+		      (systempanel))))
+
+(defwidget hyprpanel []
+	   (box :class "bar"
+		:orientation "h"
+		(centerbox :orientation "h"
+		      (workspaces)
+		      (timepanel)
+		      (systempanel))))
+
+(defwidget systempanel []
+	   (box :orientation "h"
+		:halign "end"
+		:space-evenly false
+		      (networkpanel)
+		      (batpanel)))
+
 (defwindow hyprpanel
 	   :monitor 0
-		 :class bar
+	   :class bar
 	   :geometry (geometry :x "0%"
 	   	     	       :y "0px"
 			       :width "100%"
-			       :height "30px"
+			       :height "20px"
 			       :anchor "top center")
 	   :stacking "overlay"
-		 :exclusive "true"
+	   :exclusive "true"
 	   :windowtype "dock"
 	   :wm-ignore false
-(workspaces))
+	   (hyprpanel))
 
-(deflisten get_wsp :initial "●i"
-	"./modules/workspaces.py")
+(defwindow riverpanel
+	   :monitor 0
+	   :class bar
+	   :geometry (geometry :x "0%"
+			       :y "0px"
+			       :width "100%"
+			       :height "20px"
+			       :anchor "top center")
+	   :stacking "overlay"
+	   :exclusive "true"
+	   :windowtype "dock"
+	   :wm-ignore false
+	   (riverpanel))
 
-(defwidget workspaces []
-	      {get_wsp})

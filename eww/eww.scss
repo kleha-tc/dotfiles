@@ -2,12 +2,69 @@
     all: unset;
 }
 
+window {
+    background-color: #1f1e33;
+}
+
 .bar {
-    background-color: #1f1e3388;
+    background-color: #1f1e33;
     color: #f1f2cc;
-    padding: 10px;
+    padding: 5px;
 }
 
 .workspaces button:hover {
     color: #d3d56e;
+}
+
+.workspace {
+    padding: 5px;
+}
+
+.bat-box {
+    padding: 5px;
+    border-radius: 5px;
+    min-width: 80px;
+}
+
+.bat-box.normal {
+    border: 1px solid rgba(66, 133, 244, 0.6);
+}
+.bat-box.charging {
+    border: 1px solid rgba(76, 175, 80, 0.6);
+}
+.bat-box.low {
+    border: 1px solid rgba(244, 67, 54, 0.6);
+}
+
+.network-box {
+    padding: 5px;
+    border-radius: 5px;
+    margin-right: 10px;
+    min-width: 140px;
+}
+
+.network-box.wifi {
+    border: 1px solid rgba(52, 168, 83, 0.6);
+}
+
+.network-box.ethernet {
+    border: 1px solid rgba(66, 133, 244, 0.6);
+}
+
+.network-box.disconnected {
+    border: 1px solid rgba(234, 67, 53, 0.6);
+}
+
+.network-icon {
+    margin-right: 8px;
+    font-size: 16px;
+}
+
+.network-text {
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.icon {
+    margin-right: 5px;
 }

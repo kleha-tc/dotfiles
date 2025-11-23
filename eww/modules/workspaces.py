@@ -25,6 +25,4 @@ def ret_workspace():
             res.append("○")
     print(" ".join(res))
 
-while True:
-    ret_workspace()
-    time.sleep(1)
+ret_workspace()
