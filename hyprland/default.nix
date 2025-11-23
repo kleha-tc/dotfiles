@@ -71,8 +71,8 @@
 				"$mod, mouse:273, resizewindow"
 			];
       exec-once = [
-        "waybar"
 				"fcitx5 -dr"
+				"eww open hyprpanel"
 				"hypridle"
     ];
     };
