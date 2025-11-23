@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
 {
   imports = [
@@ -28,15 +28,6 @@
   boot.kernelPackages = pkgs.linuxPackages_xanmod;
 
   networking.hostName = "nixos"; # Define your hostname.
-  networking.interfaces.enp0s20f0u2 = {
-    ipv4.addresses = [
-      {
-        address = "192.168.10.20";
-        prefixLength = 24;
-      }
-    ];
-    useDHCP = true;
-  };
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -69,6 +60,8 @@
   # Enable the KDE Plasma Desktop Environment.
   services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = true;
+
+	services.gnome.at-spi2-core.enable = lib.mkForce false;
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -125,6 +118,7 @@
       "docker"
       "libvirtd"
       "wireshark"
+			"syncthing"
     ];
     packages = with pkgs; [
       kdePackages.kate
@@ -191,6 +185,16 @@
     8080
     8384
   ];
+
+	xdg.portal = {
+		enable = true;
+		wlr.enable = true;
+		extraPortals = with pkgs; [
+			xdg-desktop-portal-hyprland
+			xdg-desktop-portal-gtk
+		];
+	};
+
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
