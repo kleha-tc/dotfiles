@@ -6,6 +6,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
+    nix-darwin = {
+      url = "github:nix-darwin/nix-darwin/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -13,6 +17,7 @@
       nixpkgs,
       home-manager,
       nixos-wsl,
+      nix-darwin,
       ...
     }:
     let
@@ -50,6 +55,9 @@
               }
             ];
           };
+        };
+        darwinConfigurations.kleha-darwin = nix-darwin.lib.darwinSystem {
+          modules = [ ./configuration-darwin.nix ];
         };
       };
 }
