@@ -22,30 +22,6 @@
   :ensure t
   :bind (([f8] . neotree-toggle)))
 
-;; direnv
-(use-package direnv
-  :ensure t
-  :config
-  (direnv-mode))
-
-;; copilot.el
-(use-package copilot
-  :ensure t
-  :hook
-  (prog-mode . copilot-mode)
-  :init
-  (setq copilot-indent-offset-warning-disable t)
-  :config
-  (define-key copilot-completion-map (kbd "<tab>") 'copilot-accept-completion)
-  (define-key copilot-completion-map (kbd "TAB") 'copilot-accept-completion))
-
-;; copilot-chat
-(use-package copilot-chat
-:ensure t
-:bind (:map global-map
-          ("C-c C-y" . copilot-chat-yank) 
-          ("C-c M-y" . copilot-chat-yank-pop)
-          ("C-c C-M-y" . (lambda () (interactive) (copilot-chat-yank-pop -1)))))
 
 ;; which-key
 (use-package which-key
@@ -62,6 +38,8 @@
 ;; pdf-tools
 (use-package pdf-tools
   :config
+  (pdf-tools-install)
   (add-hook 'pdf-view-mode-hook #'pdf-view-roll-minor-mode)
   (add-hook 'pdf-view-mode-hook (lambda () (display-line-numbers-mode -1)))
+  (add-hook 'pdf-view-mode-hook #'auto-revert-mode)
 )

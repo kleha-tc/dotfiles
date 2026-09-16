@@ -6,10 +6,10 @@
       init = {
         defaultBranch = "main";
       };
-			user = {
-				email = "kleha@klefpj.org";
-				name = "kleha";
-			};
+      user = {
+        email = "kleha@klefpj.org";
+        name = "kleha";
+      };
     };
   };
 }

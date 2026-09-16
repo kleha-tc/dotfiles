@@ -27,8 +27,6 @@
         direnv
         vue-mode
         yuck-mode
-        copilot
-        copilot-chat
         lsp-mode
         lsp-ui
         lsp-ivy
@@ -61,26 +59,26 @@
     ".emacs.d/conf".source = ./conf;
     ".emacs.d/init.el".source = ./init.el;
   };
-	home.packages = with pkgs; [
-		wl-clipboard
-		grim
-		slurp
-	];
-  xdg.desktopEntries.org-protocol = {
-    name = "Org-Protocol";
-    exec = "emacsclient %u";  # EmacsクライアントにURLを投げる
-    icon = "emacs";
-    type = "Application";
-    categories = [ "System" ];
-    mimeType = [ "x-scheme-handler/org-protocol" ];
-  };
-  # 2. MIMEタイプの関連付けを明示
-  xdg.mimeApps = {
-    enable = true;
-    defaultApplications = {
-      "x-scheme-handler/org-protocol" = [ "org-protocol.desktop" ];
-    };
-  };
+#	home.packages = with pkgs; [
+#		wl-clipboard
+#		grim
+#		slurp
+#	];
+#  xdg.desktopEntries.org-protocol = {
+#    name = "Org-Protocol";
+#    exec = "emacsclient %u";  # EmacsクライアントにURLを投げる
+#    icon = "emacs";
+#    type = "Application";
+#    categories = [ "System" ];
+#    mimeType = [ "x-scheme-handler/org-protocol" ];
+#  };
+#  # 2. MIMEタイプの関連付けを明示
+#  xdg.mimeApps = {
+#    enable = true;
+#    defaultApplications = {
+#      "x-scheme-handler/org-protocol" = [ "org-protocol.desktop" ];
+#    };
+#  };
   services.emacs = {
     enable = true;
     defaultEditor = true;

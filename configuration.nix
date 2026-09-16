@@ -1,9 +1,13 @@
-
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
   imports = [
@@ -30,7 +34,7 @@
   boot.kernelPackages = pkgs.linuxPackages_xanmod;
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModprobeConfig = "options kvm_intel nested=1";
-  
+
   networking.hostName = "nixos"; # Define your hostname.
 
   # Configure network proxy if necessary
@@ -58,14 +62,13 @@
     LC_TIME = "ja_JP.UTF-8";
   };
 
-  
   services.xserver.enable = true;
 
   # Enable the KDE Plasma Desktop Environment.
   services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = true;
 
-	services.gnome.at-spi2-core.enable = lib.mkForce false;
+  services.gnome.at-spi2-core.enable = lib.mkForce false;
 
   services.dbus.enable = true;
   services.dbus.packages = [
@@ -76,13 +79,13 @@
   #programs.gnupg.agent = {
   #  enable = true;
   #};
-  
+
   services.fprintd = {
     enable = true;
     tod.enable = true;
     tod.driver = pkgs.libfprint-2-tod1-elan;
   };
-  
+
   # Configure keymap in X11
   services.xserver.xkb = {
     layout = "us";
@@ -138,7 +141,7 @@
       "docker"
       "libvirtd"
       "wireshark"
-			"syncthing"
+      "syncthing"
       "kvm"
     ];
     packages = with pkgs; [
@@ -176,10 +179,10 @@
         -bios ${pkgs.OVMF.fd}/FV/OVMF.fd \
         "$@"
     '')
-   # pass
-   # pass-secret-service
-   # gnupg
-   # pinentry
+    # pass
+    # pass-secret-service
+    # gnupg
+    # pinentry
   ];
 
   programs.wireshark = {
@@ -205,15 +208,17 @@
     "olm-3.2.16"
   ];
 
-  swapDevices = [{
-    device = "/var/lib/swapfile";
-    size = 32 * 1024;
-  }];
+  swapDevices = [
+    {
+      device = "/var/lib/swapfile";
+      size = 32 * 1024;
+    }
+  ];
 
   zramSwap.enable = true;
-  
+
   # Enable Flake
-  
+
   nix.settings.experimental-features = [
     "nix-command"
     "flakes"
@@ -230,14 +235,14 @@
     8384
   ];
 
-	xdg.portal = {
-		enable = true;
-		wlr.enable = true;
-		extraPortals = with pkgs; [
-			xdg-desktop-portal-hyprland
-			xdg-desktop-portal-gtk
-		];
-	};
+  xdg.portal = {
+    enable = true;
+    wlr.enable = true;
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-hyprland
+      xdg-desktop-portal-gtk
+    ];
+  };
 
   virtualisation = {
     libvirtd = {

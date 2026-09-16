@@ -1,4 +1,4 @@
 { pkgs, ... }:
 {
-	programs.wofi.enable = true;
+  programs.wofi.enable = true;
 }
