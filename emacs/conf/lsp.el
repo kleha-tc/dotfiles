@@ -5,7 +5,7 @@
   :init
   (setq lsp-keymap-prefix "C-c l")
   :hook ((nix-mode . lsp)
-	 (rust-mode . lsp)
+	 (rust-ts-mode . lsp)
 	 (web-mode . lsp)
 	 (typst-ts-mode . lsp)
 	 (python-mode . lsp)

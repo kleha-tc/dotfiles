@@ -41,6 +41,7 @@
           p: with p; [
             tree-sitter-typst
             tree-sitter-html
+            tree-sitter-rust
           ]
         ))
         guix
@@ -49,6 +50,7 @@
         macrostep-geiser
         pdf-tools
         gnuplot
+        exec-path-from-shell
       ];
     overrides = self: super: {
       direnv = self.melpaPackages.direnv;

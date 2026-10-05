@@ -31,7 +31,7 @@
 
 ;; yasnippet
 (use-package yasnippet
-	:ensure t
+  :ensure t
 	:config
 	(yas-global-mode 1))
 
@@ -43,3 +43,13 @@
   (add-hook 'pdf-view-mode-hook (lambda () (display-line-numbers-mode -1)))
   (add-hook 'pdf-view-mode-hook #'auto-revert-mode)
 )
+
+;; exec-path-from-shell
+(use-package exec-path-from-shell
+    :config
+    (exec-path-from-shell-initialize))
+
+;; direnv-mode
+(use-package direnv
+  :config
+  (direnv-mode))

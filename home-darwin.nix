@@ -13,6 +13,7 @@
     nixd
     tinymist
     typst
+    raycast
   ];
   home.stateVersion = "23.11";
 }

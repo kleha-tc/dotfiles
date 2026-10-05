@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 (use-package web-mode
   :ensure t
   :mode (("\\.html?\\'" . web-mode)
@@ -11,9 +13,9 @@
   (setq web-mode-code-indent-offset 2)
   (setq web-mode-enable-current-element-highlight t))
 
-(use-package rust-mode
+(use-package rust-ts-mode
 :ensure t
-  :mode (("\\.rs\\'" . rust-mode)))
+  :mode (("\\.rs\\'" . rust-ts-mode)))
 
 (use-package nix-mode
   :ensure t
